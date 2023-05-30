@@ -16,7 +16,12 @@ import * as Location from "expo-location";
 import Carousel from "../components/Carousel";
 import Services from "../components/Services";
 import FrequentItems from "../components/FrequentItems";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../ProductReducer";
 const Homescreen = () => {
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
+
   const [displayCurrentAddress, setdisplayCurrentAddress] = useState(
     "we are loading your location"
   );
@@ -80,7 +85,16 @@ const Homescreen = () => {
       console.log(response);
     }
   };
-
+  const product = useSelector((state) => state.product.product);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (product.length > 0) return;
+    const fetchProducts = () => {
+      Fitems.map((service) => dispatch(getProducts(service)));
+    };
+    fetchProducts();
+  }, []);
+  console.log(product);
   const Fitems = [
     {
       id: "0",
@@ -182,7 +196,7 @@ const Homescreen = () => {
       {/* Services from components */}
       <Services />
       {/* rendering all the frequently bought products */}
-      {Fitems.map((item, index) => (
+      {product.map((item, index) => (
         <FrequentItems item={item} key={index} />
       ))}
     </ScrollView>
