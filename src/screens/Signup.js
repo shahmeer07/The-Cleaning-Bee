@@ -10,6 +10,7 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
+import { DARK_GRAY } from "../constants/constants";
 import { React, useState } from "react";
 import { styles } from "./Login_Signup_Style.js";
 

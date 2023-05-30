@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { YELLOW } from "./src/constants/constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Homescreen from "./screens/Homescreen";
@@ -17,12 +18,11 @@ export default function App() {
     setTimeout(() => {
       setShowSplash(false);
     }, 4000);
-  });
+  }, []);
   return (
     <View style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* <Homescreen /> */}
           {showSplash ? (
             <Stack.Screen
               name="Splash"
@@ -30,14 +30,12 @@ export default function App() {
               options={{ headerShown: false }}
             />
           ) : null}
-
-          {/* <Login /> */}
           <Stack.Screen
             name="Signup"
             component={Signup}
             options={{
               title: " ",
-              headerStyle: { backgroundColor: "#FFFFFF" },
+              headerStyle: { backgroundColor: YELLOW },
             }}
           />
           <Stack.Screen
@@ -45,7 +43,7 @@ export default function App() {
             component={Login}
             options={{
               title: " ",
-              headerStyle: { backgroundColor: "#FFFFFF" },
+              headerStyle: { backgroundColor: YELLOW },
             }}
           />
         </Stack.Navigator>
