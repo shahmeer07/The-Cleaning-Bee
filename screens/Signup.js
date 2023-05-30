@@ -13,7 +13,7 @@ import {
 import { React, useState } from "react";
 import { styles } from "./Login_Signup_Style.js";
 
-export default function Login() {
+export default function Signup({ navigation }) {
   const [name, setName] = useState("Name");
   const [email, setEmail] = useState("Email");
   const [password, setPassword] = useState("Password");
@@ -73,7 +73,9 @@ export default function Login() {
           }}
         >
           <Text>Already have an account?</Text>
-          <Text style={{ fontWeight: "bold" }}>Login</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <Text style={{ fontWeight: "bold" }}>Login</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
