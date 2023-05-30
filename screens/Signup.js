@@ -14,16 +14,17 @@ import { React, useState } from "react";
 import { styles } from "./Login_Signup_Style.js";
 
 export default function Login() {
+  const [name, setName] = useState("Name");
   const [email, setEmail] = useState("Email");
   const [password, setPassword] = useState("Password");
 
   return (
     <View style={styles.container}>
-      <Text style={styles.head}>Login</Text>
+      <Text style={styles.head}>Sign up</Text>
       <Text style={{ fontSize: 12, color: "#828282" }}>
-        Login with one of the following options
+        Sign up with one of the following options
       </Text>
-      {/* Login Options */}
+      {/* Signup Options */}
       <View style={styles.buttons}>
         <TouchableOpacity style={styles.button}>
           <Image
@@ -44,8 +45,9 @@ export default function Login() {
           ></Image>
         </TouchableOpacity>
       </View>
-      {/* Login Inputs */}
+      {/* Signup Inputs */}
       <View>
+        <TextInput style={styles.inputs} value={name} />
         <TextInput style={styles.inputs} value={email} />
         <TextInput style={styles.inputs} value={password} />
         <TouchableOpacity
@@ -54,12 +56,12 @@ export default function Login() {
           <Text
             style={{
               marginTop: 13,
-              paddingLeft: 100,
+              paddingLeft: 70,
               color: "#FCFDFF",
               fontWeight: "bold",
             }}
           >
-            Login
+            Create an account
           </Text>
         </TouchableOpacity>
         <View
@@ -70,8 +72,8 @@ export default function Login() {
             marginTop: 30,
           }}
         >
-          <Text>Don't have an account?</Text>
-          <Text style={{ fontWeight: "bold" }}>Sign up</Text>
+          <Text>Already have an account?</Text>
+          <Text style={{ fontWeight: "bold" }}>Login</Text>
         </View>
       </View>
     </View>

@@ -3,13 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import Homescreen from "./screens/Homescreen";
 import Splash from "./screens/Splash";
 import Login from "./screens/Login";
+import Signup from "./screens/Signup";
 
 export default function App() {
   return (
     <View style={styles.container}>
       {/* <Homescreen /> */}
       {/* <Splash /> */}
-      <Login />
+      {/* <Login /> */}
+      <Signup />
       <StatusBar style="auto" />
     </View>
   );
