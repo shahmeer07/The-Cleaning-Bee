@@ -19,6 +19,8 @@ import FrequentItems from "../components/FrequentItems";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../ProductReducer";
 import { useNavigation } from "@react-navigation/native";
+import { collection, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 const Homescreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   const [items, setItems] = useState([]);
@@ -95,8 +97,14 @@ const Homescreen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (product.length > 0) return;
-    const fetchProducts = () => {
-      Fitems.map((service) => dispatch(getProducts(service)));
+    const fetchProducts = async () => {
+      const colRef = collection(db, "types");
+      const docsSnap = await getDocs(colRef);
+      docsSnap.forEach((doc) => {
+        items.push(doc.data());
+      });
+      items?.map((service) => dispatch(getProducts(service)));
+      // Fitems.map((service) => dispatch(getProducts(service)));
     };
     fetchProducts();
   }, []);
@@ -110,21 +118,21 @@ const Homescreen = () => {
       price: 10,
     },
     {
-      id: "11",
+      id: "1",
       image: "https://cdn-icons-png.flaticon.com/512/1059/1059246.png",
       name: "Broom",
       quantity: 0,
       price: 10,
     },
     {
-      id: "12",
+      id: "2",
       image: "https://cdn-icons-png.flaticon.com/512/3365/3365197.png",
       name: "Floor \nCleaner",
       quantity: 0,
       price: 10,
     },
     {
-      id: "13",
+      id: "3",
       image:
         "https://cdn.iconscout.com/icon/premium/png-256-thumb/wiper-11-708920.png",
       name: "Wiper",
@@ -132,21 +140,21 @@ const Homescreen = () => {
       price: 10,
     },
     {
-      id: "14",
+      id: "4",
       image: "https://cdn-icons-png.flaticon.com/512/1216/1216355.png",
       name: "Window \nCleaners",
       quantity: 0,
       price: 10,
     },
     {
-      id: "15",
+      id: "5",
       image: "https://cdn-icons-png.flaticon.com/512/1059/1059226.png",
       name: "Vacuum",
       quantity: 0,
       price: 10,
     },
     {
-      id: "16",
+      id: "6",
       image: "https://cdn-icons-png.flaticon.com/512/3238/3238669.png",
       name: "Detergent",
       quantity: 0,
