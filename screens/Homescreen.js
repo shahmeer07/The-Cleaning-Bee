@@ -98,7 +98,7 @@ const Homescreen = () => {
   useEffect(() => {
     if (product.length > 0) return;
     const fetchProducts = async () => {
-      const colRef = collection(db, "types");
+      const colRef = collection(db, "values");
       const docsSnap = await getDocs(colRef);
       docsSnap.forEach((doc) => {
         items.push(doc.data());
