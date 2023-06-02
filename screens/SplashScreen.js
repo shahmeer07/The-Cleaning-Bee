@@ -1,18 +1,20 @@
-import { React, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   View,
-  Text,
   Image,
   StyleSheet,
   Animated,
-  ImageBackground,
   Easing,
+  useWindowDimensions,
+  Text,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SplashScreen = () => {
   const navigation = useNavigation();
+  const windowWidth = useWindowDimensions().width;
+  const windowHeight = useWindowDimensions().height;
 
   useEffect(() => {
     animateLogo();
@@ -22,14 +24,14 @@ const SplashScreen = () => {
 
     return () => clearTimeout(timer);
   }, [navigation]);
+
   const translateY = useRef(new Animated.Value(0)).current;
 
   const animateLogo = () => {
-    //   For up and down
     Animated.loop(
       Animated.sequence([
         Animated.timing(translateY, {
-          toValue: -50,
+          toValue: windowHeight / 6 - 20, // Adjust this value based on the logo height
           duration: 1500,
           easing: Easing.linear,
           useNativeDriver: true,
@@ -46,17 +48,23 @@ const SplashScreen = () => {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <ImageBackground
+    <SafeAreaView style={styles.container}>
+      <View style={styles.bg}>
+        <Animated.Image
           source={require("../assets/TCB-Splash-Screen.png")}
-          style={styles.bg}
-        >
-          <Animated.Image
-            source={require("../assets/bee-128.png")}
-            style={[styles.logo, { translateY }]}
-          ></Animated.Image>
-        </ImageBackground>
+          style={[
+            styles.backgroundImage,
+            { width: windowWidth, height: windowHeight },
+          ]}
+          resizeMode="cover"
+        />
+        <Animated.Image
+          source={require("../assets/bee-128.png")}
+          style={[styles.logo, { transform: [{ translateY }] }]}
+        />
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -68,11 +76,28 @@ const styles = StyleSheet.create({
   },
   bg: {
     flex: 1,
+    alignItems: "center",
     justifyContent: "center",
-    height: 850,
+  },
+  backgroundImage: {
+    position: "absolute",
   },
   logo: {
-    marginLeft: 130,
+    width: 128,
+    height: 128,
+    position: "absolute",
+  },
+  textContainer: {
+    position: "absolute",
+    bottom: 50, // Adjust this value to control the vertical position
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
   },
 });
 
