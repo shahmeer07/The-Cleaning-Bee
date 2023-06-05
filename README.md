@@ -1,7 +1,7 @@
 # The-Cleaning-Bee
 The Cleaning Bee is an online maid services application is a mobile application that provides users with an easy and convenient way to book maid services for their homes. This app will allow users to browse available maids, book their services, and pay for them directly through the app. The app will be built upon React Native with Firebase as the database.
 
-*> Note that in order to run this app on your local machine, you will first need to install **_Expo Go_ app** from Playstore/Apple store*
+<sup>> Note that in order to run this app on your local machine, you will first need to install **_Expo Go_ app** from Playstore/Apple store</sup>
 
 ### To run the following command on expo, run: yarn start
  Follow our Linkedin Page: [The Cleaning Bee](https://www.linkedin.com/company/the-cleaning-bee9984/)
