@@ -4,7 +4,7 @@ The Cleaning Bee is an online maid services application is a mobile application 
 *> Note that in order to run this app on your local machine, you will first need to install **_Expo Go_ app** from Playstore/Apple store*
 
 ### To run the following command on expo, run: yarn start
-### Follow our Linkedin Page: [The Cleaning Bee] (https://www.linkedin.com/company/the-cleaning-bee9984/)
+ Follow our Linkedin Page: [The Cleaning Bee] (https://www.linkedin.com/company/the-cleaning-bee9984/)
 
 ## Features
 
