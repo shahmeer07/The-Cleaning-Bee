@@ -1,37 +1,35 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Pressable,
-  Image,
-} from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
+import { View, Text, ScrollView, Pressable, Image } from "react-native";
 
-const Services = () => {
+const Services = ({}) => {
+  const navigation = useNavigation();
   const services = [
     {
-      id: "0",
+      id: "001",
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa-q3ocnXVylUTIRj4TPvB3g7LayaXcjakiAsCa_Y&s",
-      name: "Cleaning \n Pakages",
+      name: "Cleaning \n Packages",
     },
     {
-      id: "11",
+      id: "011",
       image: "https://cdn-icons-png.flaticon.com/128/2975/2975175.png",
-      name: "Laundry \n Pakages",
+      name: "Laundry \n Packages",
     },
     {
-      id: "12",
+      id: "012",
       image: "https://cdn-icons-png.flaticon.com/128/9753/9753675.png",
       name: "Dry \n Cleaning",
     },
     {
-      id: "13",
+      id: "013",
       image: "https://cdn-icons-png.flaticon.com/128/995/995016.png",
       name: "Cleaning \n supplies",
     },
   ];
+
   return (
     <View style={{ padding: 10 }}>
       <Text style={{ fontSize: 16, fontWeight: "500", marginBottom: 7 }}>
@@ -47,12 +45,22 @@ const Services = () => {
               borderRadius: 7,
             }}
             key={index}
+            onPress={() => {
+              if (service.id === "001") {
+                navigation.navigate("CleaningPackages");
+              } else if (service.id === "011") {
+                navigation.navigate("LaundryPackage");
+              } else if (service.id === "012") {
+                navigation.navigate("DryCleaning");
+              } else if (service.id === "013") {
+                navigation.navigate("CleaningSupplies");
+              }
+            }}
           >
             <Image
               source={{ uri: service.image }}
               style={{ width: 70, height: 70 }}
             />
-
             <Text style={{ textAlign: "center", marginTop: 10 }}>
               {service.name}
             </Text>
@@ -64,5 +72,3 @@ const Services = () => {
 };
 
 export default Services;
-
-const styles = StyleSheet.create({});

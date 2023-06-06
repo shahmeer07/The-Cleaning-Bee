@@ -211,6 +211,16 @@ const Homescreen = () => {
         {/* Services from components */}
         <Services />
         {/* rendering all the frequently bought products */}
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "500",
+            marginBottom: 7,
+            marginLeft: 10,
+          }}
+        >
+          Frequently Bought Items :D
+        </Text>
         {product.map((item, index) => (
           <FrequentItems item={item} key={index} />
         ))}

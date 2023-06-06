@@ -7,6 +7,7 @@ import {
   Easing,
   useWindowDimensions,
   Text,
+  TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -65,6 +66,12 @@ const SplashScreen = () => {
         <View style={styles.textContainer}>
           <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>
         </View>
+        <TouchableOpacity
+          style={styles.pressable}
+          onPress={() => navigation.navigate("Home")} // Replace 'Home' with the name of your home screen
+        >
+          <Text style={styles.pressableText}>Go to Home</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -98,6 +105,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     textAlign: "center",
+  },
+  pressable: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+    padding: 10,
+    backgroundColor: "#FF9800", // Change to the desired color
+    borderRadius: 8,
+  },
+  pressableText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
 
