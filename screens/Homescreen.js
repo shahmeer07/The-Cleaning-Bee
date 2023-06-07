@@ -21,6 +21,7 @@ import { getProducts } from "../ProductReducer";
 import { useNavigation } from "@react-navigation/native";
 import { collection, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import Footer from "../components/Footer";
 const Homescreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   const [items, setItems] = useState([]);
@@ -261,6 +262,7 @@ const Homescreen = () => {
           </Pressable>
         </Pressable>
       )}
+      <Footer />
     </>
   );
 };

@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import HorizontalDatepicker from "@awrminkhodaei/react-native-horizontal-datepicker";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import Footer from "../components/Footer";
 
 const PickUpScreen = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -234,6 +235,7 @@ const PickUpScreen = () => {
           </Pressable>
         </Pressable>
       )}
+      <Footer />
     </>
   );
 };

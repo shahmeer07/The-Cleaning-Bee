@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Footer from "../components/Footer";
 
-const CleaningPackageScreen = () => {
+const MaidsScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
@@ -39,18 +39,17 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://e7.pngegg.com/pngimages/672/957/png-clipart-woman-wearing-blue-apron-maid-service-cleaner-cleaning-housekeeping-maid-miscellaneous-service-thumbnail.png",
+              uri: "https://w7.pngwing.com/pngs/707/89/png-transparent-female-housekeeper-illustration-maid-cleaning-the-maid-smiled-hand-people-cartoon-thumbnail.png",
             }}
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
-            Welcome to our Sparkle Clean Package, where we transform your living
-            or working space into a pristine oasis. Sit back, relax, and let our
-            expert cleaners work their magic. With our comprehensive cleaning
-            services, we'll ensure every nook and cranny is free from dust,
-            dirt, and grime. Experience the joy of coming home to a spotless
-            environment, ready to embrace you with freshness and serenity.
-            Choose the Sparkle Clean Package and let us make your world shine.
+            Sophia is a dedicated and detail-oriented maid with years of
+            experience in the cleaning industry. She takes pride in her work and
+            goes above and beyond to ensure every corner of your space is
+            spotless. With her friendly demeanor and excellent organizational
+            skills, Sophia will transform your home into a clean and inviting
+            sanctuary.
           </Text>
         </View>
       );
@@ -64,19 +63,17 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://w7.pngwing.com/pngs/707/89/png-transparent-female-housekeeper-illustration-maid-cleaning-the-maid-smiled-hand-people-cartoon-thumbnail.png",
             }}
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
-            Indulge in the ultimate Deep Refresh Package and discover a whole
-            new level of cleanliness. Our dedicated team will delve deep into
-            every corner, banishing even the most stubborn stains and odors.
-            Experience the transformative power of our meticulous deep cleaning
-            techniques, leaving your space revitalized and rejuvenated. From
-            thorough sanitization to organizing chaos, we'll ensure a truly
-            refreshing environment. Elevate your surroundings with the Deep
-            Refresh Package and breathe in the essence of cleanliness.
+            Meet Emily, a reliable and efficient maid who brings a meticulous
+            approach to every cleaning task. With her keen eye for detail, she
+            specializes in deep cleaning and is known for tackling even the
+            toughest cleaning challenges. Emily's professionalism and commitment
+            to delivering outstanding results will leave you impressed and
+            satisfied with a sparkling clean environment.
           </Text>
         </View>
       );
@@ -90,20 +87,17 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://w7.pngwing.com/pngs/707/89/png-transparent-female-housekeeper-illustration-maid-cleaning-the-maid-smiled-hand-people-cartoon-thumbnail.png",
             }}
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
-            Introducing our exquisite Luxury Shine Package, designed to cater to
-            your discerning taste for perfection. Step into a realm of
-            unparalleled cleanliness, where every detail is meticulously
-            attended to. Our highly skilled professionals will employ
-            top-of-the-line cleaning methods and premium products to create an
-            ambiance of opulence and elegance. From polished surfaces to
-            flawlessly arranged spaces, the Luxury Shine Package offers an
-            exceptional cleaning experience. Pamper yourself and elevate your
-            standards with the epitome of luxury cleanliness.
+            Miguel is a trustworthy and hardworking maid who understands the
+            importance of a clean and well-maintained space. With his strong
+            work ethic and friendly nature, he quickly establishes a rapport
+            with clients, ensuring their comfort and satisfaction. Miguel's
+            expertise in organizing and his attention to detail make him the
+            perfect choice for creating a tidy and clutter-free home.
           </Text>
         </View>
       );
@@ -118,9 +112,9 @@ const CleaningPackageScreen = () => {
           style={styles.packageButton}
           onPress={togglePackage1}
           android_ripple={{ color: "#FF9800" }}
-          accessibilityLabel="1000"
+          accessibilityLabel="1010"
         >
-          <Text style={styles.packageButtonText}> Sparkle Clean Package </Text>
+          <Text style={styles.packageButtonText}>Sophia Rodriguez</Text>
         </Pressable>
 
         {renderPackage1Details()}
@@ -129,9 +123,9 @@ const CleaningPackageScreen = () => {
           style={styles.packageButton}
           onPress={togglePackage2}
           android_ripple={{ color: "#FF9800" }}
-          accessibilityLabel="2000"
+          accessibilityLabel="2010"
         >
-          <Text style={styles.packageButtonText}> Deep Refresh Package </Text>
+          <Text style={styles.packageButtonText}>Emily Chen</Text>
         </Pressable>
 
         {renderPackage2Details()}
@@ -140,9 +134,9 @@ const CleaningPackageScreen = () => {
           style={styles.packageButton}
           onPress={togglePackage3}
           android_ripple={{ color: "#FF9800" }}
-          accessibilityLabel="3000"
+          accessibilityLabel="3010"
         >
-          <Text style={styles.packageButtonText}>Luxury Shine Package</Text>
+          <Text style={styles.packageButtonText}>Miguel Lopez</Text>
         </Pressable>
 
         {renderPackage3Details()}
@@ -152,7 +146,7 @@ const CleaningPackageScreen = () => {
   );
 };
 
-export default CleaningPackageScreen;
+export default MaidsScreen;
 
 const windowWidth = Dimensions.get("window").width;
 

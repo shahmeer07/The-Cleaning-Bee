@@ -14,6 +14,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import Footer from "../components/Footer";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -164,6 +165,7 @@ const LoginScreen = () => {
       )}
     </SafeAreaView>
   );
+  <Footer />;
 };
 
 export default LoginScreen;

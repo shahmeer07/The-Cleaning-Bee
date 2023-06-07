@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import React from "react";
 import LottieView from "lottie-react-native";
+import Footer from "../components/Footer";
 
 const OrderScreen = () => {
   return (
@@ -43,6 +44,7 @@ const OrderScreen = () => {
         loop={false}
         speed={0.7}
       />
+      <Footer />
     </SafeAreaView>
   );
 };

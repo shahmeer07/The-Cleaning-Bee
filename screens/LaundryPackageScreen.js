@@ -8,6 +8,7 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
+import Footer from "../components/Footer";
 
 const LaundryPackageScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
@@ -38,34 +39,19 @@ const LaundryPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://image.pngaaa.com/577/174577-middle.png",
             }}
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
-            {/* Add your 300-word description of why cleaning is necessary */}
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed
-            odio quis lectus rhoncus consequat. Vivamus lacinia felis lectus,
-            non viverra orci interdum vitae. Fusce accumsan neque sit amet augue
-            fringilla, vitae rutrum elit aliquet. Morbi in efficitur odio, eget
-            bibendum lacus. Suspendisse nec bibendum nunc, eu auctor turpis.
-            Phasellus vestibulum tristique justo et tristique. Aenean hendrerit
-            mollis nisl, ac interdum ipsum suscipit nec. Integer eu libero vitae
-            risus tempor sollicitudin. Donec fermentum lectus ac ex accumsan, a
-            convallis elit venenatis. Curabitur ultrices, mi vitae ultrices
-            lacinia, leo mi sollicitudin nunc, in suscipit justo urna vitae
-            velit. In at nisi consequat, vestibulum arcu a, venenatis arcu.
-            Nullam rutrum, ex quis consectetur iaculis, nulla purus tincidunt
-            mi, vel condimentum lacus augue sed sapien. Sed pretium urna risus,
-            id scelerisque dui fringilla in. Mauris scelerisque facilisis dolor,
-            eu auctor sapien feugiat id. Ut vel cursus lectus. Cras ultrices
-            luctus lorem at efficitur. Vestibulum ante ipsum primis in faucibus
-            orci luctus et ultrices posuere cubilia curae; Suspendisse quis
-            pretium est, at fermentum mauris. Phasellus pellentesque, justo a
-            egestas pulvinar, tellus justo laoreet mauris, a auctor lectus velit
-            vel neque. Mauris aliquam lectus vitae facilisis placerat. Quisque
-            nec elit tristique, aliquam mi at, finibus elit. Morbi non metus
-            tempus
+            Introducing our Fresh & Clean Package, your go-to solution for all
+            your laundry needs. We understand the importance of having fresh,
+            clean, and neatly folded clothes. With our reliable laundry
+            services, we'll take care of your laundry from start to finish,
+            ensuring your garments come back looking and smelling fantastic.
+            Experience the joy of effortlessly maintaining a wardrobe filled
+            with crisp, clean clothes. Choose our Fresh & Clean Package and let
+            us handle your laundry worries.
           </Text>
         </View>
       );
@@ -79,11 +65,20 @@ const LaundryPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://png.pngtree.com/png-clipart/20230124/ourmid/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png",
             }}
             style={styles.packageImage}
           />
-          <Text style={styles.packageText}>Package 2 details</Text>
+          <Text style={styles.packageText}>
+            Indulge in the luxury of our Deluxe Care Package, designed to give
+            your clothes the special treatment they deserve. We go above and
+            beyond to provide exceptional care for your garments. From delicate
+            fabrics to tough stains, our expert team utilizes advanced
+            techniques and specialized products to ensure your clothes receive
+            the utmost care and attention. With our Deluxe Care Package, your
+            clothes will be treated like royalty. Pamper yourself and your
+            wardrobe with our unparalleled laundry services.
+          </Text>
         </View>
       );
     }
@@ -96,11 +91,20 @@ const LaundryPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://e7.pngegg.com/pngimages/175/516/png-clipart-laundry-room-washing-machines-clothing-loundry-kitchen-service.png",
             }}
             style={styles.packageImage}
           />
-          <Text style={styles.packageText}>Package 3 details</Text>
+          <Text style={styles.packageText}>
+            Pressed for time? Our Express Refresh Package is here to save the
+            day! We understand your busy schedule and the need for quick and
+            efficient laundry services. Our Express Refresh Package offers a
+            lightning-fast turnaround time, ensuring your clothes are washed,
+            dried, and folded promptly. No more stress or delays. Just drop off
+            your laundry, and we'll take care of the rest, so you can get back
+            to your day with refreshed and perfectly clean clothes. Say goodbye
+            to laundry woes with our convenient Express Refresh Package.
+          </Text>
         </View>
       );
     }
@@ -116,7 +120,7 @@ const LaundryPackageScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="1010"
         >
-          <Text style={styles.packageButtonText}>Package 1</Text>
+          <Text style={styles.packageButtonText}>Fresh & Clean Package</Text>
         </Pressable>
 
         {renderPackage1Details()}
@@ -127,7 +131,7 @@ const LaundryPackageScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="2010"
         >
-          <Text style={styles.packageButtonText}>Package 2</Text>
+          <Text style={styles.packageButtonText}>Deluxe Care Package</Text>
         </Pressable>
 
         {renderPackage2Details()}
@@ -138,11 +142,12 @@ const LaundryPackageScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="3010"
         >
-          <Text style={styles.packageButtonText}>Package 3</Text>
+          <Text style={styles.packageButtonText}>Express Refresh Package</Text>
         </Pressable>
 
         {renderPackage3Details()}
       </ScrollView>
+      <Footer />
     </View>
   );
 };
@@ -199,5 +204,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     textAlign: "justify",
     color: "#FFF",
+    fontFamily: "Lato",
   },
 });

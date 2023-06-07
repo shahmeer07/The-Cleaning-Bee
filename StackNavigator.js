@@ -11,9 +11,10 @@ import OrderScreen from "./screens/OrderScreen";
 import SplashScreen from "./screens/SplashScreen";
 import Services from "./components/Services";
 import DryCleaningScreen from "./screens/DryCleaningScreen";
-import CleaningSuppliesScreen from "./screens/CleaningSuppliesScreen";
+import CleaningSuppliesScreen from "./screens/MaidsScreen";
 import CleaningPackageScreen from "./screens/CleaningPackageScreen";
 import LaundryPakageScreen from "./screens/LaundryPackageScreen";
+import MaidsScreen from "./screens/MaidsScreen";
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -45,10 +46,7 @@ const StackNavigator = () => {
         />
         <Stack.Screen name="LaundryPackage" component={LaundryPakageScreen} />
         <Stack.Screen name="DryCleaning" component={DryCleaningScreen} />
-        <Stack.Screen
-          name="CleaningSupplies"
-          component={CleaningSuppliesScreen}
-        />
+        <Stack.Screen name="Maids" component={MaidsScreen} />
         <Stack.Screen
           name="PickUp"
           component={PickUpScreen}

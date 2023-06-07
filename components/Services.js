@@ -25,8 +25,9 @@ const Services = ({}) => {
     },
     {
       id: "013",
-      image: "https://cdn-icons-png.flaticon.com/128/995/995016.png",
-      name: "Cleaning \n supplies",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNSzLQ8Db8PidnqQxzXJ5JF8lK7Ryzz7rRPA&usqp=CAU",
+      name: " \n Maids",
     },
   ];
 
@@ -53,7 +54,7 @@ const Services = ({}) => {
               } else if (service.id === "012") {
                 navigation.navigate("DryCleaning");
               } else if (service.id === "013") {
-                navigation.navigate("CleaningSupplies");
+                navigation.navigate("Maids");
               }
             }}
           >

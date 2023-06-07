@@ -8,6 +8,7 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
+import Footer from "../components/Footer";
 
 const DryCleaningScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
@@ -43,29 +44,14 @@ const DryCleaningScreen = () => {
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
-            {/* Add your 300-word description of why cleaning is necessary */}
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed
-            odio quis lectus rhoncus consequat. Vivamus lacinia felis lectus,
-            non viverra orci interdum vitae. Fusce accumsan neque sit amet augue
-            fringilla, vitae rutrum elit aliquet. Morbi in efficitur odio, eget
-            bibendum lacus. Suspendisse nec bibendum nunc, eu auctor turpis.
-            Phasellus vestibulum tristique justo et tristique. Aenean hendrerit
-            mollis nisl, ac interdum ipsum suscipit nec. Integer eu libero vitae
-            risus tempor sollicitudin. Donec fermentum lectus ac ex accumsan, a
-            convallis elit venenatis. Curabitur ultrices, mi vitae ultrices
-            lacinia, leo mi sollicitudin nunc, in suscipit justo urna vitae
-            velit. In at nisi consequat, vestibulum arcu a, venenatis arcu.
-            Nullam rutrum, ex quis consectetur iaculis, nulla purus tincidunt
-            mi, vel condimentum lacus augue sed sapien. Sed pretium urna risus,
-            id scelerisque dui fringilla in. Mauris scelerisque facilisis dolor,
-            eu auctor sapien feugiat id. Ut vel cursus lectus. Cras ultrices
-            luctus lorem at efficitur. Vestibulum ante ipsum primis in faucibus
-            orci luctus et ultrices posuere cubilia curae; Suspendisse quis
-            pretium est, at fermentum mauris. Phasellus pellentesque, justo a
-            egestas pulvinar, tellus justo laoreet mauris, a auctor lectus velit
-            vel neque. Mauris aliquam lectus vitae facilisis placerat. Quisque
-            nec elit tristique, aliquam mi at, finibus elit. Morbi non metus
-            tempus
+            Introducing our Classic Care Package, where timeless elegance meets
+            exceptional dry cleaning services. We understand the value of your
+            cherished garments and the need for meticulous care. Our dedicated
+            team of experts will handle your suits, dresses, and formal wear
+            with the utmost attention to detail. Experience the Classic Care
+            difference as we restore your clothes to their pristine condition,
+            ensuring they look their best. Choose our Classic Care Package and
+            entrust your wardrobe to our expertise.
           </Text>
         </View>
       );
@@ -83,7 +69,17 @@ const DryCleaningScreen = () => {
             }}
             style={styles.packageImage}
           />
-          <Text style={styles.packageText}>Package 2 details</Text>
+          <Text style={styles.packageText}>
+            Indulge in the luxury of our Premium Clean Package, designed to
+            cater to the finest fabrics and delicate garments. We believe that
+            exceptional clothing deserves extraordinary care. Our team of
+            specialists is trained to handle luxury fabrics, intricate designs,
+            and high-end clothing with precision. With our advanced cleaning
+            techniques and meticulous attention to detail, we ensure your
+            garments receive the premium treatment they deserve. Elevate your
+            wardrobe with our unparalleled Premium Clean Package and experience
+            dry cleaning at its finest.
+          </Text>
         </View>
       );
     }
@@ -100,7 +96,16 @@ const DryCleaningScreen = () => {
             }}
             style={styles.packageImage}
           />
-          <Text style={styles.packageText}>Package 3 details</Text>
+          <Text style={styles.packageText}>
+            Pressed for time? Our Quick Refresh Package is here to offer
+            convenience without compromising quality. We understand the demands
+            of a busy lifestyle. With our efficient dry cleaning services, we
+            provide a quick turnaround time, ensuring your clothes are ready for
+            any occasion in no time. Drop off your garments with us, and our
+            swift processes will have them looking fresh, clean, and ready to
+            wear. Experience the ease of our Quick Refresh Package and reclaim
+            your time without compromising on cleanliness.
+          </Text>
         </View>
       );
     }
@@ -116,7 +121,7 @@ const DryCleaningScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="1100"
         >
-          <Text style={styles.packageButtonText}>Package 1</Text>
+          <Text style={styles.packageButtonText}>Classic Care Package</Text>
         </Pressable>
 
         {renderPackage1Details()}
@@ -127,7 +132,7 @@ const DryCleaningScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="2100"
         >
-          <Text style={styles.packageButtonText}>Package 2</Text>
+          <Text style={styles.packageButtonText}>Premium Clean Package</Text>
         </Pressable>
 
         {renderPackage2Details()}
@@ -138,11 +143,12 @@ const DryCleaningScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="3100"
         >
-          <Text style={styles.packageButtonText}>Package 3</Text>
+          <Text style={styles.packageButtonText}>Quick Refresh Package</Text>
         </Pressable>
 
         {renderPackage3Details()}
       </ScrollView>
+      <Footer />
     </View>
   );
 };
@@ -199,5 +205,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     textAlign: "justify",
     color: "#FFF",
+    fontFamily: "Lato",
   },
 });

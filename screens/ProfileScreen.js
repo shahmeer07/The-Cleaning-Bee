@@ -3,6 +3,7 @@ import React from "react";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import Footer from "../components/Footer";
 
 const ProfileScreen = () => {
   const user = auth.currentUser;
@@ -27,6 +28,7 @@ const ProfileScreen = () => {
       <Pressable onPress={signOutUser}>
         <Text>Sign Out</Text>
       </Pressable>
+      <Footer />
     </SafeAreaView>
   );
 };

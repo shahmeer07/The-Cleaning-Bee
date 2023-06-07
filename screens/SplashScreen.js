@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Footer from "../components/Footer";
 
 const SplashScreen = () => {
   const navigation = useNavigation();
@@ -73,6 +74,7 @@ const SplashScreen = () => {
           <Text style={styles.pressableText}>Go to Home</Text>
         </TouchableOpacity>
       </View>
+      <Footer />
     </SafeAreaView>
   );
 };

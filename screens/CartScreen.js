@@ -18,6 +18,7 @@ import {
 import { decrementQty, incrementQty } from "../ProductReducer";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import Footer from "../components/Footer";
 
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -322,7 +323,7 @@ const CartScreen = () => {
                     To Pay
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {total + 95}
+                    {total + 5}
                   </Text>
                 </View>
               </View>
@@ -370,6 +371,7 @@ const CartScreen = () => {
       )}
     </>
   );
+  <Footer />;
 };
 
 export default CartScreen;
