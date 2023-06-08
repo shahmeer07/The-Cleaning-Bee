@@ -6,7 +6,7 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -41,6 +41,11 @@ const CartScreen = () => {
         merge: true,
       }
     );
+  };
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  const handlePaymentMethodSelection = (method) => {
+    setPaymentMethod(method);
   };
   return (
     <>
@@ -158,7 +163,48 @@ const CartScreen = () => {
                 </View>
               ))}
             </Pressable>
-
+            {/* Payment Options */}
+            <View style={{ marginHorizontal: 10 }}>
+              <Text style={styles.paymentOptionsTitle}>Payment Options</Text>
+              <View style={styles.paymentOptionButtonContainer}>
+                <Pressable
+                  style={[
+                    styles.paymentOptionButton,
+                    paymentMethod === "cash" &&
+                      styles.selectedPaymentOptionButton,
+                  ]}
+                  onPress={() => handlePaymentMethodSelection("cash")}
+                >
+                  <Text
+                    style={[
+                      styles.paymentOptionButtonText,
+                      paymentMethod === "cash" &&
+                        styles.selectedPaymentOptionButtonText,
+                    ]}
+                  >
+                    Cash on Delivery
+                  </Text>
+                </Pressable>
+                <Pressable
+                  style={[
+                    styles.paymentOptionButton,
+                    paymentMethod === "card" &&
+                      styles.selectedPaymentOptionButton,
+                  ]}
+                  onPress={() => handlePaymentMethodSelection("card")}
+                >
+                  <Text
+                    style={[
+                      styles.paymentOptionButtonText,
+                      paymentMethod === "card" &&
+                        styles.selectedPaymentOptionButtonText,
+                    ]}
+                  >
+                    Card Payment
+                  </Text>
+                </Pressable>
+              </View>
+            </View>
             <View style={{ marginHorizontal: 10 }}>
               <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 30 }}>
                 Billing Details
@@ -322,7 +368,7 @@ const CartScreen = () => {
                     To Pay
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {total + 95}
+                    {total + 5}
                   </Text>
                 </View>
               </View>
@@ -374,4 +420,32 @@ const CartScreen = () => {
 
 export default CartScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  paymentOptionsTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 30,
+  },
+  paymentOptionButtonContainer: {
+    flexDirection: "row",
+    marginTop: 15,
+  },
+  paymentOptionButton: {
+    backgroundColor: "white",
+    borderRadius: 6,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginRight: 10,
+  },
+  selectedPaymentOptionButton: {
+    backgroundColor: "#088F8F",
+  },
+  paymentOptionButtonText: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "#088F8F",
+  },
+  selectedPaymentOptionButtonText: {
+    color: "white",
+  },
+});

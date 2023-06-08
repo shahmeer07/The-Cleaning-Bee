@@ -224,7 +224,7 @@ const PickUpScreen = () => {
                 marginVertical: 6,
               }}
             >
-              extra charges might apply
+              + $5 Platform Charges
             </Text>
           </View>
 
