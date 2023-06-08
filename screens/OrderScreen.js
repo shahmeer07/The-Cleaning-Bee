@@ -44,10 +44,10 @@ const OrderScreen = () => {
         loop={false}
         speed={0.7}
       />
-      <Footer />
     </SafeAreaView>
   );
 };
+<Footer />;
 
 export default OrderScreen;
 
