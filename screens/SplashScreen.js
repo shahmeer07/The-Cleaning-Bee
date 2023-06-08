@@ -50,32 +50,34 @@ const SplashScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.bg}>
-        <Animated.Image
-          source={require("../assets/TCB-Splash-Screen.png")}
-          style={[
-            styles.backgroundImage,
-            { width: windowWidth, height: windowHeight },
-          ]}
-          resizeMode="cover"
-        />
-        <Animated.Image
-          source={require("../assets/bee-128.png")}
-          style={[styles.logo, { transform: [{ translateY }] }]}
-        />
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>
+    <>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.bg}>
+          <Animated.Image
+            source={require("../assets/TCB-Splash-Screen.png")}
+            style={[
+              styles.backgroundImage,
+              { width: windowWidth, height: windowHeight },
+            ]}
+            resizeMode="cover"
+          />
+          <Animated.Image
+            source={require("../assets/bee-128.png")}
+            style={[styles.logo, { transform: [{ translateY }] }]}
+          />
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.pressable}
+            onPress={() => navigation.navigate("Home")} // Replace 'Home' with the name of your home screen
+          >
+            <Text style={styles.pressableText}>Go to Home</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.pressable}
-          onPress={() => navigation.navigate("Home")} // Replace 'Home' with the name of your home screen
-        >
-          <Text style={styles.pressableText}>Go to Home</Text>
-        </TouchableOpacity>
-      </View>
+      </SafeAreaView>
       <Footer />
-    </SafeAreaView>
+    </>
   );
 };
 

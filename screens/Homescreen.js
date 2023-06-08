@@ -165,7 +165,7 @@ const Homescreen = () => {
 
   return (
     <>
-      <ScrollView style={{ backgroundColor: "#F0F0F0", marginTop: 38 }}>
+      <ScrollView style={{ backgroundColor: "#FDD835", marginTop: 38 }}>
         {/* Location and Profile */}
         <View
           style={{
@@ -231,7 +231,7 @@ const Homescreen = () => {
           style={{
             backgroundColor: "#088F8F",
             padding: 10,
-            marginBottom: 40,
+            marginBottom: 4,
             margin: 15,
             borderRadius: 7,
             flexDirection: "row",
