@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,22 +6,21 @@ import {
   ScrollView,
   Pressable,
 } from "react-native";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../firebase";
-import Footer from "../components/Footer";
 import {
   cleanCart,
   decrementQuantity,
   incrementQuantity,
 } from "../CartReducer";
 import { decrementQty, incrementQty } from "../ProductReducer";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
 
 const CartScreen = () => {
-  const cart = useSelector((state) => state.cart); // Add missing useSelector hook
-  const [previousOrders, setPreviousOrders] = useState([]);
+  const cart = useSelector((state) => state.cart.cart);
   const route = useRoute();
   const total = cart
     .map((item) => item.quantity * item.price)
@@ -31,13 +29,8 @@ const CartScreen = () => {
   const userUid = auth.currentUser.uid;
   const dispatch = useDispatch();
   const placeOrder = async () => {
-    // Save the current order as a previous order
-    setPreviousOrders((prevOrders) => [...prevOrders, cart]);
-
-    // Reset the cart
+    navigation.navigate("Order");
     dispatch(cleanCart());
-
-    // Save the current order to the database
     await setDoc(
       doc(db, "users", `${userUid}`),
       {
@@ -48,11 +41,7 @@ const CartScreen = () => {
         merge: true,
       }
     );
-
-    // Navigate to the Order screen
-    navigation.navigate("Order");
   };
-
   return (
     <>
       <ScrollView style={{ marginTop: 50 }}>
@@ -87,95 +76,87 @@ const CartScreen = () => {
                 padding: 14,
               }}
             >
-              {previousOrders.map((order, orderIndex) =>
-                order.map((item, index) => (
-                  <View
+              {cart.map((item, index) => (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginVertical: 12,
+                  }}
+                  key={index}
+                >
+                  <Text style={{ width: 100, fontSize: 16, fontWeight: "500" }}>
+                    {item.name}
+                  </Text>
+
+                  {/* - + button */}
+                  <Pressable
                     style={{
                       flexDirection: "row",
+                      paddingHorizontal: 10,
+                      paddingVertical: 5,
                       alignItems: "center",
-                      justifyContent: "space-between",
-                      marginVertical: 12,
+                      borderColor: "#BEBEBE",
+                      borderWidth: 0.5,
+                      borderRadius: 10,
                     }}
-                    key={index}
                   >
-                    <Text
-                      style={{
-                        width: 100,
-                        fontSize: 16,
-                        fontWeight: "500",
-                      }}
-                    >
-                      {item.name}
-                    </Text>
-
-                    {/* - + button */}
                     <Pressable
-                      style={{
-                        flexDirection: "row",
-                        paddingHorizontal: 10,
-                        paddingVertical: 5,
-                        alignItems: "center",
-                        borderColor: "#BEBEBE",
-                        borderWidth: 0.5,
-                        borderRadius: 10,
+                      onPress={() => {
+                        dispatch(decrementQuantity(item)); // cart
+                        dispatch(decrementQty(item)); // product
                       }}
                     >
-                      <Pressable
-                        onPress={() => {
-                          dispatch(decrementQuantity(item)); // cart
-                          dispatch(decrementQty(item)); // product
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          color: "#088F8F",
+                          paddingHorizontal: 6,
+                          fontWeight: "600",
                         }}
                       >
-                        <Text
-                          style={{
-                            fontSize: 20,
-                            color: "#088F8F",
-                            paddingHorizontal: 6,
-                            fontWeight: "600",
-                          }}
-                        >
-                          -
-                        </Text>
-                      </Pressable>
-
-                      <Pressable>
-                        <Text
-                          style={{
-                            fontSize: 19,
-                            color: "#088F8F",
-                            paddingHorizontal: 8,
-                            fontWeight: "600",
-                          }}
-                        >
-                          {item.quantity}
-                        </Text>
-                      </Pressable>
-
-                      <Pressable
-                        onPress={() => {
-                          dispatch(incrementQuantity(item)); // cart
-                          dispatch(incrementQty(item)); //product
-                        }}
-                      >
-                        <Text
-                          style={{
-                            fontSize: 20,
-                            color: "#088F8F",
-                            paddingHorizontal: 6,
-                            fontWeight: "600",
-                          }}
-                        >
-                          +
-                        </Text>
-                      </Pressable>
+                        -
+                      </Text>
                     </Pressable>
 
-                    <Text style={{ fontSize: 16, fontWeight: "500" }}>
-                      ${item.price * item.quantity}
-                    </Text>
-                  </View>
-                ))
-              )}
+                    <Pressable>
+                      <Text
+                        style={{
+                          fontSize: 19,
+                          color: "#088F8F",
+                          paddingHorizontal: 8,
+                          fontWeight: "600",
+                        }}
+                      >
+                        {item.quantity}
+                      </Text>
+                    </Pressable>
+
+                    <Pressable
+                      onPress={() => {
+                        dispatch(incrementQuantity(item)); // cart
+                        dispatch(incrementQty(item)); //product
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          color: "#088F8F",
+                          paddingHorizontal: 6,
+                          fontWeight: "600",
+                        }}
+                      >
+                        +
+                      </Text>
+                    </Pressable>
+                  </Pressable>
+
+                  <Text style={{ fontSize: 16, fontWeight: "500" }}>
+                    ${item.price * item.quantity}
+                  </Text>
+                </View>
+              ))}
             </Pressable>
 
             <View style={{ marginHorizontal: 10 }}>
@@ -341,7 +322,7 @@ const CartScreen = () => {
                     To Pay
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                    {total + 5}
+                    {total + 95}
                   </Text>
                 </View>
               </View>
@@ -387,7 +368,6 @@ const CartScreen = () => {
           </Pressable>
         </Pressable>
       )}
-      <Footer />
     </>
   );
 };
