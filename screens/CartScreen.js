@@ -91,7 +91,7 @@ const CartScreen = () => {
                   key={index}
                 >
                   <Text style={{ width: 100, fontSize: 16, fontWeight: "500" }}>
-                    {item.name}
+                    {item.name} {item.packageName}
                   </Text>
 
                   {/* - + button */}
@@ -227,7 +227,7 @@ const CartScreen = () => {
                     Item Total
                   </Text>
                   <Text style={{ fontSize: 18, fontWeight: "400" }}>
-                    ₹{total}
+                    ${total}
                   </Text>
                 </View>
 

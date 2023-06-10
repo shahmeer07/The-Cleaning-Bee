@@ -17,6 +17,9 @@ const LaundryPackageScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+  const package1Name = "Fresh & Clean Package";
+  const package2Name = "Deluxe Care Pakage";
+  const package3Name = "Express Refresh Package";
   const cart = useSelector((state) => state.cart.cart);
 
   const togglePackage1 = () => {
@@ -40,10 +43,10 @@ const LaundryPackageScreen = () => {
   const dispatch = useDispatch();
 
   const handleAddToCart = (packageId, price, packageName) => {
-    dispatch(addToCart({ packageId, price, packageName }));
+    dispatch(addToCart({ id: packageId, price, packageName }));
   };
   const handleRemoveFromCart = (packageId) => {
-    dispatch(removeFromCart(packageId));
+    dispatch(removeFromCart({ id: packageId }));
   };
 
   const renderPackage1Details = () => {
@@ -66,7 +69,7 @@ const LaundryPackageScreen = () => {
             with crisp, clean clothes. Choose our Fresh & Clean Package and let
             us handle your laundry worries.
           </Text>
-          {cart.find((item) => item.packageId === 1010) ? (
+          {cart.find((item) => item.id === 1010) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(1010)}
@@ -78,9 +81,7 @@ const LaundryPackageScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() =>
-                handleAddToCart(1010, 100, "Fresh & Clean Package")
-              }
+              onPress={() => handleAddToCart(1010, 100, package1Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -114,7 +115,7 @@ const LaundryPackageScreen = () => {
             wardrobe with our unparalleled laundry services.
           </Text>
 
-          {cart.find((item) => item.packageId === 2010) ? (
+          {cart.find((item) => item.id === 2010) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(2010)}
@@ -126,7 +127,7 @@ const LaundryPackageScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(2010, 200, "Deluxe Care Pakage")}
+              onPress={() => handleAddToCart(2010, 200, package2Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -160,10 +161,10 @@ const LaundryPackageScreen = () => {
             to laundry woes with our convenient Express Refresh Package.
           </Text>
 
-          {cart.find((item) => item.packageId === 3010) ? (
+          {cart.find((item) => item.id === 3010) ? (
             <Pressable
               style={styles.removeButton}
-              onPress={() => handleRemoveFromCart(2010)}
+              onPress={() => handleRemoveFromCart(3010)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Remove from Cart"
             >
@@ -172,9 +173,7 @@ const LaundryPackageScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() =>
-                handleAddToCart(3010, 300, "Express Refresh Pakage")
-              }
+              onPress={() => handleAddToCart(3010, 300, package3Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >

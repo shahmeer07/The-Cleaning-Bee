@@ -15,6 +15,10 @@ const CleaningPackageScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+
+  const package1Name = "Sparkle Clean Package";
+  const package2Name = "Deep Refresh Package";
+  const package3Name = "Luxury Shine Package";
   const cart = useSelector((state) => state.cart.cart);
   const togglePackage1 = () => {
     setPackage1Visible(!package1Visible);
@@ -36,10 +40,10 @@ const CleaningPackageScreen = () => {
   const dispatch = useDispatch();
 
   const handleAddToCart = (packageId, price, packageName) => {
-    dispatch(addToCart({ packageId, price, packageName }));
+    dispatch(addToCart({ id: packageId, price, packageName }));
   };
   const handleRemoveFromCart = (packageId) => {
-    dispatch(removeFromCart(packageId));
+    dispatch(removeFromCart({ id: packageId }));
   };
   const renderPackage1Details = () => {
     if (package1Visible) {
@@ -60,7 +64,7 @@ const CleaningPackageScreen = () => {
             environment, ready to embrace you with freshness and serenity.
             Choose the Sparkle Clean Package and let us make your world shine.
           </Text>
-          {cart.find((item) => item.packageId === 1000) ? (
+          {cart.find((item) => item.id === 1000) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(1000)}
@@ -72,9 +76,7 @@ const CleaningPackageScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() =>
-                handleAddToCart(1000, 150, "Sparkle Clean Package")
-              }
+              onPress={() => handleAddToCart(1000, 150, package1Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -107,7 +109,7 @@ const CleaningPackageScreen = () => {
             refreshing environment. Elevate your surroundings with the Deep
             Refresh Package and breathe in the essence of cleanliness.
           </Text>
-          {cart.find((item) => item.packageId === 2000) ? (
+          {cart.find((item) => item.id === 2000) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(2000)}
@@ -119,7 +121,7 @@ const CleaningPackageScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(2000, 250, "Deep Refresh Package")}
+              onPress={() => handleAddToCart(2000, 250, package2Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -153,10 +155,10 @@ const CleaningPackageScreen = () => {
             exceptional cleaning experience. Pamper yourself and elevate your
             standards with the epitome of luxury cleanliness.
           </Text>
-          {cart.find((item) => item.packageId === 3000) ? (
+          {cart.find((item) => item.id === 3000) ? (
             <Pressable
               style={styles.removeButton}
-              onPress={() => handleRemoveFromCart(2000)}
+              onPress={() => handleRemoveFromCart(3000)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Remove from Cart"
             >
@@ -165,7 +167,7 @@ const CleaningPackageScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(3000, 350, "Luxury Shine Package")}
+              onPress={() => handleAddToCart(3000, 350, package3Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >

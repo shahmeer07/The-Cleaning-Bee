@@ -15,6 +15,9 @@ const DryCleaningScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+  const package1Name = "Classic care Package";
+  const package2Name = "Premium Clean Package";
+  const package3Name = "Quick Refresh Package";
   const cart = useSelector((state) => state.cart.cart);
   const togglePackage1 = () => {
     setPackage1Visible(!package1Visible);
@@ -35,10 +38,10 @@ const DryCleaningScreen = () => {
   };
   const dispatch = useDispatch();
   const handleAddToCart = (packageId, price, packageName) => {
-    dispatch(addToCart({ packageId, price, packageName }));
+    dispatch(addToCart({ id: packageId, price, packageName }));
   };
   const handleRemoveFromCart = (packageId) => {
-    dispatch(removeFromCart(packageId));
+    dispatch(removeFromCart({ id: packageId }));
   };
   const renderPackage1Details = () => {
     if (package1Visible) {
@@ -60,7 +63,7 @@ const DryCleaningScreen = () => {
             ensuring they look their best. Choose our Classic Care Package and
             entrust your wardrobe to our expertise.
           </Text>
-          {cart.find((item) => item.packageId === 1100) ? (
+          {cart.find((item) => item.id === 1100) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(1100)}
@@ -72,7 +75,7 @@ const DryCleaningScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(1100, 20, "Classic care Package")}
+              onPress={() => handleAddToCart(1100, 20, package1Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -106,7 +109,7 @@ const DryCleaningScreen = () => {
             wardrobe with our unparalleled Premium Clean Package and experience
             dry cleaning at its finest.
           </Text>
-          {cart.find((item) => item.packageId === 2100) ? (
+          {cart.find((item) => item.id === 2100) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(2100)}
@@ -118,7 +121,7 @@ const DryCleaningScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(2100, 40, "Premium Clean Package")}
+              onPress={() => handleAddToCart(2100, 40, package2Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -151,7 +154,7 @@ const DryCleaningScreen = () => {
             wear. Experience the ease of our Quick Refresh Package and reclaim
             your time without compromising on cleanliness.
           </Text>
-          {cart.find((item) => item.packageId === 3100) ? (
+          {cart.find((item) => item.id === 3100) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(3100)}
@@ -163,7 +166,7 @@ const DryCleaningScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(3100, 60, "Quick Refresh Package")}
+              onPress={() => handleAddToCart(3100, 60, package3Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >

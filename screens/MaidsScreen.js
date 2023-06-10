@@ -15,6 +15,9 @@ const MaidsScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+  const package1Name = "Sophia Rodriguez";
+  const package2Name = "Emily Chen";
+  const package3Name = "Lele Pons";
   const cart = useSelector((state) => state.cart.cart);
   const togglePackage1 = () => {
     setPackage1Visible(!package1Visible);
@@ -36,10 +39,10 @@ const MaidsScreen = () => {
   const dispatch = useDispatch();
 
   const handleAddToCart = (packageId, price, packageName) => {
-    dispatch(addToCart({ packageId, price, packageName }));
+    dispatch(addToCart({ id: packageId, price, packageName }));
   };
   const handleRemoveFromCart = (packageId) => {
-    dispatch(removeFromCart(packageId));
+    dispatch(removeFromCart({ id: packageId }));
   };
   const renderPackage1Details = () => {
     if (package1Visible) {
@@ -59,7 +62,7 @@ const MaidsScreen = () => {
             skills, Sophia will transform your home into a clean and inviting
             sanctuary.
           </Text>
-          {cart.find((item) => item.packageId === 101000) ? (
+          {cart.find((item) => item.id === 101000) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(101000)}
@@ -102,7 +105,7 @@ const MaidsScreen = () => {
             to delivering outstanding results will leave you impressed and
             satisfied with a sparkling clean environment.
           </Text>
-          {cart.find((item) => item.packageId === 201000) ? (
+          {cart.find((item) => item.id === 201000) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(201000)}
@@ -138,14 +141,14 @@ const MaidsScreen = () => {
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
-            Miguel is a trustworthy and hardworking maid who understands the
+            Lele is a trustworthy and hardworking maid who understands the
             importance of a clean and well-maintained space. With his strong
             work ethic and friendly nature, he quickly establishes a rapport
-            with clients, ensuring their comfort and satisfaction. Miguel's
+            with clients, ensuring their comfort and satisfaction. Lele's
             expertise in organizing and his attention to detail make him the
             perfect choice for creating a tidy and clutter-free home.
           </Text>
-          {cart.find((item) => item.packageId === 301000) ? (
+          {cart.find((item) => item.id === 301000) ? (
             <Pressable
               style={styles.removeButton}
               onPress={() => handleRemoveFromCart(301000)}
@@ -157,7 +160,7 @@ const MaidsScreen = () => {
           ) : (
             <Pressable
               style={styles.addButton}
-              onPress={() => handleAddToCart(301000, 800, "Miguel Lopez")}
+              onPress={() => handleAddToCart(301000, 800, package3Name)}
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
@@ -201,7 +204,7 @@ const MaidsScreen = () => {
           android_ripple={{ color: "#FF9800" }}
           accessibilityLabel="301000"
         >
-          <Text style={styles.packageButtonText}>Miguel Lopez</Text>
+          <Text style={styles.packageButtonText}>Lele Pons</Text>
         </Pressable>
 
         {renderPackage3Details()}
