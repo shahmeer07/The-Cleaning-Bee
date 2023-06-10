@@ -18,13 +18,16 @@ import {
 import { decrementQty, incrementQty } from "../ProductReducer";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   const route = useRoute();
+  const [noOfDays, setNoOfDays] = useState(1);
   const total = cart
     .map((item) => item.quantity * item.price)
     .reduce((curr, prev) => curr + prev, 0);
   const navigation = useNavigation();
+
   const userUid = auth.currentUser.uid;
   const dispatch = useDispatch();
   const placeOrder = async () => {
@@ -35,6 +38,8 @@ const CartScreen = () => {
       {
         orders: { ...cart },
         pickUpDetails: route.params,
+        // noOfDays: noOfDays.toString(),
+        toPay: total + 5,
       },
       {
         merge: true,
@@ -46,6 +51,7 @@ const CartScreen = () => {
   const handlePaymentMethodSelection = (method) => {
     setPaymentMethod(method);
   };
+
   return (
     <>
       <ScrollView style={{ marginTop: 50 }}>
@@ -283,7 +289,7 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
                   >
-                    selected Date
+                    Delivery Date
                   </Text>
                   <Text
                     style={{
@@ -292,7 +298,7 @@ const CartScreen = () => {
                       color: "#088F8F",
                     }}
                   >
-                    {/* {route.params.pickUpDate} */}
+                    {route.params.deliveryDate}
                   </Text>
                 </View>
 
@@ -306,7 +312,7 @@ const CartScreen = () => {
                   <Text
                     style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
                   >
-                    No Of Days
+                    No. of days for processing
                   </Text>
 
                   <Text
@@ -316,7 +322,7 @@ const CartScreen = () => {
                       color: "#088F8F",
                     }}
                   >
-                    {route.params.no_Of_days}
+                    {noOfDays}
                   </Text>
                 </View>
 
@@ -425,24 +431,25 @@ const styles = StyleSheet.create({
   },
   paymentOptionButtonContainer: {
     flexDirection: "row",
-    marginTop: 15,
+    marginTop: 10,
   },
   paymentOptionButton: {
     backgroundColor: "white",
-    borderRadius: 6,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    padding: 10,
+    borderRadius: 7,
     marginRight: 10,
+    borderWidth: 1,
+    borderColor: "gray",
   },
   selectedPaymentOptionButton: {
-    backgroundColor: "#088F8F",
+    borderColor: "#088F8F",
   },
   paymentOptionButtonText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "500",
-    color: "#088F8F",
+    color: "gray",
   },
   selectedPaymentOptionButtonText: {
-    color: "white",
+    color: "#088F8F",
   },
 });
