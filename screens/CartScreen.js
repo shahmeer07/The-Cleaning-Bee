@@ -18,7 +18,6 @@ import {
 import { decrementQty, incrementQty } from "../ProductReducer";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
-
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   const route = useRoute();
@@ -137,7 +136,6 @@ const CartScreen = () => {
                         {item.quantity}
                       </Text>
                     </Pressable>
-
                     <Pressable
                       onPress={() => {
                         dispatch(incrementQuantity(item)); // cart
@@ -156,7 +154,6 @@ const CartScreen = () => {
                       </Text>
                     </Pressable>
                   </Pressable>
-
                   <Text style={{ fontSize: 16, fontWeight: "500" }}>
                     ${item.price * item.quantity}
                   </Text>

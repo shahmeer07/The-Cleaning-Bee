@@ -3,6 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Homescreen from "./screens/Homescreen";
+import ProfileScreen from "./screens/ProfileScreen";
 import PickUpScreen from "./screens/PickUpScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
@@ -43,10 +44,23 @@ const StackNavigator = () => {
         <Stack.Screen
           name="CleaningPackages"
           component={CleaningPackageScreen}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen name="LaundryPackage" component={LaundryPakageScreen} />
-        <Stack.Screen name="DryCleaning" component={DryCleaningScreen} />
-        <Stack.Screen name="Maids" component={MaidsScreen} />
+        <Stack.Screen
+          name="LaundryPackage"
+          component={LaundryPakageScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="DryCleaning"
+          component={DryCleaningScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Maids"
+          component={MaidsScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="PickUp"
           component={PickUpScreen}

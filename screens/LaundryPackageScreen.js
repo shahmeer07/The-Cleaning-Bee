@@ -10,10 +10,14 @@ import {
 } from "react-native";
 import Footer from "../components/Footer";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../CartReducer";
+
 const LaundryPackageScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+  const cart = useSelector((state) => state.cart.cart);
 
   const togglePackage1 = () => {
     setPackage1Visible(!package1Visible);
@@ -33,13 +37,22 @@ const LaundryPackageScreen = () => {
     setPackage3Visible(!package3Visible);
   };
 
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (packageId, price, packageName) => {
+    dispatch(addToCart({ packageId, price, packageName }));
+  };
+  const handleRemoveFromCart = (packageId) => {
+    dispatch(removeFromCart(packageId));
+  };
+
   const renderPackage1Details = () => {
     if (package1Visible) {
       return (
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://image.pngaaa.com/577/174577-middle.png",
+              uri: "https://png.pngtree.com/png-clipart/20230124/ourmid/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png",
             }}
             style={styles.packageImage}
           />
@@ -53,6 +66,27 @@ const LaundryPackageScreen = () => {
             with crisp, clean clothes. Choose our Fresh & Clean Package and let
             us handle your laundry worries.
           </Text>
+          {cart.find((item) => item.packageId === 1010) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(1010)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() =>
+                handleAddToCart(1010, 100, "Fresh & Clean Package")
+              }
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -79,6 +113,26 @@ const LaundryPackageScreen = () => {
             clothes will be treated like royalty. Pamper yourself and your
             wardrobe with our unparalleled laundry services.
           </Text>
+
+          {cart.find((item) => item.packageId === 2010) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(2010)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() => handleAddToCart(2010, 200, "Deluxe Care Pakage")}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -91,7 +145,7 @@ const LaundryPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://e7.pngegg.com/pngimages/175/516/png-clipart-laundry-room-washing-machines-clothing-loundry-kitchen-service.png",
+              uri: "https://png.pngtree.com/png-clipart/20230124/ourmid/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png",
             }}
             style={styles.packageImage}
           />
@@ -105,6 +159,28 @@ const LaundryPackageScreen = () => {
             to your day with refreshed and perfectly clean clothes. Say goodbye
             to laundry woes with our convenient Express Refresh Package.
           </Text>
+
+          {cart.find((item) => item.packageId === 3010) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(2010)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() =>
+                handleAddToCart(3010, 300, "Express Refresh Pakage")
+              }
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -205,5 +281,33 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     color: "#FFF",
     fontFamily: "Lato",
+  },
+  addButton: {
+    width: windowWidth * 0.6,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  addButtonText: {
+    color: "#FF9800",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  removeButton: {
+    width: windowWidth * 0.6,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  removeButtonText: {
+    color: "#FF9800",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

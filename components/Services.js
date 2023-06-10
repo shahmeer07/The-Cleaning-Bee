@@ -33,7 +33,14 @@ const Services = ({}) => {
 
   return (
     <View style={{ padding: 10 }}>
-      <Text style={{ fontSize: 16, fontWeight: "500", marginBottom: 7 }}>
+      <Text
+        style={{
+          fontSize: 16,
+          fontWeight: "500",
+          marginBottom: 7,
+          color: "#FFFFFF",
+        }}
+      >
         Services Available
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>

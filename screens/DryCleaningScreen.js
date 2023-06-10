@@ -9,12 +9,13 @@ import {
   ScrollView,
 } from "react-native";
 import Footer from "../components/Footer";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../CartReducer";
 const DryCleaningScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
-
+  const cart = useSelector((state) => state.cart.cart);
   const togglePackage1 = () => {
     setPackage1Visible(!package1Visible);
     setPackage2Visible(false);
@@ -32,7 +33,13 @@ const DryCleaningScreen = () => {
     setPackage2Visible(false);
     setPackage3Visible(!package3Visible);
   };
-
+  const dispatch = useDispatch();
+  const handleAddToCart = (packageId, price, packageName) => {
+    dispatch(addToCart({ packageId, price, packageName }));
+  };
+  const handleRemoveFromCart = (packageId) => {
+    dispatch(removeFromCart(packageId));
+  };
   const renderPackage1Details = () => {
     if (package1Visible) {
       return (
@@ -53,6 +60,25 @@ const DryCleaningScreen = () => {
             ensuring they look their best. Choose our Classic Care Package and
             entrust your wardrobe to our expertise.
           </Text>
+          {cart.find((item) => item.packageId === 1100) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(1100)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() => handleAddToCart(1100, 20, "Classic care Package")}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -80,6 +106,25 @@ const DryCleaningScreen = () => {
             wardrobe with our unparalleled Premium Clean Package and experience
             dry cleaning at its finest.
           </Text>
+          {cart.find((item) => item.packageId === 2100) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(2100)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() => handleAddToCart(2100, 40, "Premium Clean Package")}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -106,6 +151,25 @@ const DryCleaningScreen = () => {
             wear. Experience the ease of our Quick Refresh Package and reclaim
             your time without compromising on cleanliness.
           </Text>
+          {cart.find((item) => item.packageId === 3100) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(3100)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() => handleAddToCart(3100, 60, "Quick Refresh Package")}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -206,5 +270,33 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     color: "#FFF",
     fontFamily: "Lato",
+  },
+  addButton: {
+    width: windowWidth * 0.6,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  addButtonText: {
+    color: "#FF9800",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  removeButton: {
+    width: windowWidth * 0.6,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  removeButtonText: {
+    color: "#FF9800",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

@@ -165,7 +165,7 @@ const Homescreen = () => {
 
   return (
     <>
-      <ScrollView style={{ backgroundColor: "#FDD835", marginTop: 38 }}>
+      <ScrollView style={{ backgroundColor: "#F0F0F0", marginTop: 38 }}>
         {/* Location and Profile */}
         <View
           style={{
@@ -194,6 +194,7 @@ const Homescreen = () => {
         {/* Search Bar */}
         <View
           style={{
+            backgroundColor: "#F0F0F0",
             padding: 10,
             margin: 10,
             flexDirection: "row",
@@ -218,6 +219,7 @@ const Homescreen = () => {
             fontWeight: "500",
             marginBottom: 7,
             marginLeft: 10,
+            color: "#FFFFFF",
           }}
         >
           Frequently Bought Items :D

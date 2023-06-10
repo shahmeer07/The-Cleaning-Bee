@@ -9,12 +9,13 @@ import {
   ScrollView,
 } from "react-native";
 import Footer from "../components/Footer";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../CartReducer";
 const CleaningPackageScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
-
+  const cart = useSelector((state) => state.cart.cart);
   const togglePackage1 = () => {
     setPackage1Visible(!package1Visible);
     setPackage2Visible(false);
@@ -32,7 +33,14 @@ const CleaningPackageScreen = () => {
     setPackage2Visible(false);
     setPackage3Visible(!package3Visible);
   };
+  const dispatch = useDispatch();
 
+  const handleAddToCart = (packageId, price, packageName) => {
+    dispatch(addToCart({ packageId, price, packageName }));
+  };
+  const handleRemoveFromCart = (packageId) => {
+    dispatch(removeFromCart(packageId));
+  };
   const renderPackage1Details = () => {
     if (package1Visible) {
       return (
@@ -52,6 +60,27 @@ const CleaningPackageScreen = () => {
             environment, ready to embrace you with freshness and serenity.
             Choose the Sparkle Clean Package and let us make your world shine.
           </Text>
+          {cart.find((item) => item.packageId === 1000) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(1000)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() =>
+                handleAddToCart(1000, 150, "Sparkle Clean Package")
+              }
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -78,6 +107,25 @@ const CleaningPackageScreen = () => {
             refreshing environment. Elevate your surroundings with the Deep
             Refresh Package and breathe in the essence of cleanliness.
           </Text>
+          {cart.find((item) => item.packageId === 2000) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(2000)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() => handleAddToCart(2000, 250, "Deep Refresh Package")}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -105,6 +153,25 @@ const CleaningPackageScreen = () => {
             exceptional cleaning experience. Pamper yourself and elevate your
             standards with the epitome of luxury cleanliness.
           </Text>
+          {cart.find((item) => item.packageId === 3000) ? (
+            <Pressable
+              style={styles.removeButton}
+              onPress={() => handleRemoveFromCart(2000)}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Remove from Cart"
+            >
+              <Text style={styles.removeButtonText}>Remove</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.addButton}
+              onPress={() => handleAddToCart(3000, 350, "Luxury Shine Package")}
+              android_ripple={{ color: "#FF9800" }}
+              accessibilityLabel="Add to Cart"
+            >
+              <Text style={styles.addButtonText}>Add</Text>
+            </Pressable>
+          )}
         </View>
       );
     }
@@ -205,5 +272,33 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     color: "#FFF",
     fontFamily: "Lato",
+  },
+  addButton: {
+    width: windowWidth * 0.6,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  addButtonText: {
+    color: "#FF9800",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  removeButton: {
+    width: windowWidth * 0.6,
+    height: 40,
+    borderRadius: 8,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  removeButtonText: {
+    color: "#FF9800",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
