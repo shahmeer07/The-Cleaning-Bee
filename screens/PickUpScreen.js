@@ -16,6 +16,7 @@ import moment from "moment";
 import Footer from "../components/Footer";
 
 const PickUpScreen = () => {
+  const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedDeliveryDate, setSelectedDeliveryDate] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -54,7 +55,7 @@ const PickUpScreen = () => {
   const navigation = useNavigation();
 
   const proceedToCart = () => {
-    if (!selectedDate || !selectedTime) {
+    if (!selectedDate || !selectedTime || !selectedAddress) {
       Alert.alert(
         "Empty or invalid",
         "Please select all the fields",
@@ -73,6 +74,7 @@ const PickUpScreen = () => {
         pickUpDate: selectedDate,
         selectedTime: selectedTime,
         deliveryDate: calculateDeliveryDate(selectedDate),
+        address: selectedAddress,
       });
     }
   };
@@ -123,6 +125,8 @@ const PickUpScreen = () => {
             borderRadius: 9,
             margin: 10,
           }}
+          value={selectedAddress}
+          onChangeText={(address) => setSelectedAddress(address)}
         />
         <Text style={{ fontSize: 16, fontWeight: "500", marginHorizontal: 10 }}>
           Pick Up Date

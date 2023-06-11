@@ -1,4 +1,5 @@
 import {
+  Alert,
   StyleSheet,
   Text,
   View,
@@ -26,11 +27,20 @@ const CartScreen = () => {
   const total = cart
     .map((item) => item.quantity * item.price)
     .reduce((curr, prev) => curr + prev, 0);
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  const handlePaymentMethodSelection = (method) => {
+    setPaymentMethod(method);
+  };
   const navigation = useNavigation();
 
   const userUid = auth.currentUser.uid;
   const dispatch = useDispatch();
   const placeOrder = async () => {
+    if (paymentMethod === "") {
+      Alert.alert("Payment Option Required", "Please select a payment option.");
+      return;
+    }
     navigation.navigate("Order");
     dispatch(cleanCart());
     await setDoc(
@@ -39,17 +49,13 @@ const CartScreen = () => {
         orders: { ...cart },
         pickUpDetails: route.params,
         // noOfDays: noOfDays.toString(),
+        paymentMethod: paymentMethod,
         toPay: total + 5,
       },
       {
         merge: true,
       }
     );
-  };
-  const [paymentMethod, setPaymentMethod] = useState("");
-
-  const handlePaymentMethodSelection = (method) => {
-    setPaymentMethod(method);
   };
 
   return (
@@ -301,6 +307,53 @@ const CartScreen = () => {
                     {route.params.deliveryDate}
                   </Text>
                 </View>
+                {/* Delivery Address */}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Text
+                    style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
+                  >
+                    Delivery Address
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "400",
+                      color: "#088F8F",
+                    }}
+                  >
+                    {route.params.address}
+                  </Text>
+                </View>
+
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginVertical: 10,
+                  }}
+                >
+                  <Text
+                    style={{ fontSize: 18, fontWeight: "500", color: "gray" }}
+                  >
+                    Payment Method
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "400",
+                      color: "#088F8F",
+                    }}
+                  >
+                    {paymentMethod}
+                  </Text>
+                </View>
 
                 <View
                   style={{
@@ -410,7 +463,16 @@ const CartScreen = () => {
             </Text>
           </View>
 
-          <Pressable onPress={placeOrder}>
+          <Pressable
+            onPress={placeOrder}
+            disabled={paymentMethod === ""}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              opacity: paymentMethod === "" ? 0.5 : 1,
+            }}
+          >
             <Text style={{ fontSize: 17, fontWeight: "600", color: "white" }}>
               Place Order
             </Text>
@@ -443,6 +505,7 @@ const styles = StyleSheet.create({
   },
   selectedPaymentOptionButton: {
     borderColor: "#088F8F",
+    backgroundColor: "#088F8F",
   },
   paymentOptionButtonText: {
     fontSize: 16,
@@ -451,5 +514,6 @@ const styles = StyleSheet.create({
   },
   selectedPaymentOptionButtonText: {
     color: "#088F8F",
+    color: "white",
   },
 });
