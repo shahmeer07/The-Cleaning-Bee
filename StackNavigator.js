@@ -16,6 +16,8 @@ import CleaningSuppliesScreen from "./screens/MaidsScreen";
 import CleaningPackageScreen from "./screens/CleaningPackageScreen";
 import LaundryPakageScreen from "./screens/LaundryPackageScreen";
 import MaidsScreen from "./screens/MaidsScreen";
+import FAQsScreen from "./screens/FAQsScreen";
+import PastOrderScreen from "./screens/PastOrderScreen";
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -34,6 +36,16 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Home"
           component={Homescreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="FAQs"
+          component={FAQsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PastOrders"
+          component={PastOrderScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen

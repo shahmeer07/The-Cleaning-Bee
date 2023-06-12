@@ -80,7 +80,7 @@ const DryCleaningScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $20</Text>
             </Pressable>
           )}
         </View>
@@ -126,7 +126,7 @@ const DryCleaningScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $40</Text>
             </Pressable>
           )}
         </View>
@@ -171,7 +171,7 @@ const DryCleaningScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $60</Text>
             </Pressable>
           )}
         </View>

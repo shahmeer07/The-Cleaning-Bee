@@ -17,6 +17,8 @@ import {
   incrementQuantity,
 } from "../CartReducer";
 import { decrementQty, incrementQty } from "../ProductReducer";
+import { collection, addDoc } from "firebase/firestore";
+
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 
@@ -36,11 +38,32 @@ const CartScreen = () => {
 
   const userUid = auth.currentUser.uid;
   const dispatch = useDispatch();
+
   const placeOrder = async () => {
     if (paymentMethod === "") {
       Alert.alert("Payment Option Required", "Please select a payment option.");
       return;
     }
+    // Start of Past Orders handling
+    const order = {
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+      items: cart,
+    };
+
+    // Add the order to the user's pastOrders array
+    try {
+      const userUid = auth.currentUser.uid;
+      const userDocRef = collection(db, "users", userUid, "orders");
+      await addDoc(userDocRef, {
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+        items: cart,
+      });
+    } catch (error) {
+      console.error("Error adding order to pastOrders:", error);
+    }
+    // End of Past Orders handling
     navigation.navigate("Order");
     dispatch(cleanCart());
     await setDoc(

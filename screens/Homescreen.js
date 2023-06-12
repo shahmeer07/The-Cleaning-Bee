@@ -39,6 +39,7 @@ const Homescreen = () => {
     checkIfLocationEnabled();
     getCurrentLocation();
   }, []);
+  const [optionsVisible, setOptionsVisible] = useState(false);
   const checkIfLocationEnabled = async () => {
     let enabled = await Location.hasServicesEnabledAsync();
     if (!enabled) {
@@ -163,7 +164,17 @@ const Homescreen = () => {
       price: 10,
     },
   ];
+  const handlePastOrdersPress = () => {
+    navigation.navigate("PastOrders");
+  };
 
+  // Handle the press event for FAQs
+  const handleFAQsPress = () => {
+    navigation.navigate("FAQs");
+  };
+  const toggleOptions = () => {
+    setOptionsVisible(!optionsVisible);
+  };
   return (
     <>
       <ScrollView style={{ backgroundColor: "#FDD835", marginTop: 38 }}>
@@ -179,7 +190,10 @@ const Homescreen = () => {
             <Text style={{ fontSize: 18, fontWeight: "600" }}>Home</Text>
             <Text style={{ fontSize: 12 }}>{displayCurrentAddress}</Text>
           </View>
-          <Pressable style={{ marginLeft: "auto", marginRight: 7 }}>
+          <Pressable
+            style={{ marginLeft: "auto", marginRight: 7 }}
+            onPress={toggleOptions}
+          >
             <Image
               style={{
                 width: 40,
@@ -191,6 +205,19 @@ const Homescreen = () => {
             />
           </Pressable>
         </View>
+
+        {/* Options window */}
+        {optionsVisible && (
+          <View style={styles.optionsWindow}>
+            <Pressable style={styles.option} onPress={handlePastOrdersPress}>
+              <Text style={styles.optionText}>Past Orders</Text>
+            </Pressable>
+            <Pressable style={styles.option} onPress={handleFAQsPress}>
+              <Text style={styles.optionText}>FAQs</Text>
+            </Pressable>
+          </View>
+        )}
+
         {/* Search Bar */}
         <View
           style={{
@@ -271,4 +298,23 @@ const Homescreen = () => {
 
 export default Homescreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  optionsWindow: {
+    position: "absolute",
+    top: 54,
+    right: 10,
+    backgroundColor: "#fff",
+    padding: 10,
+    borderRadius: 5,
+    elevation: 3,
+    zIndex: 1,
+  },
+  option: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
+  optionText: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+});

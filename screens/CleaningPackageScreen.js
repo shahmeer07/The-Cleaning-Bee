@@ -95,7 +95,7 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "",
+              uri: "https://cdn.pixabay.com/photo/2012/04/11/17/24/cleaning-29040_1280.png",
             }}
             style={styles.packageImage}
           />
