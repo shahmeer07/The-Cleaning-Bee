@@ -13,6 +13,7 @@ import HorizontalDatepicker from "@awrminkhodaei/react-native-horizontal-datepic
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import Footer from "../components/Footer";
+import { handlePayment } from "../utils/Payment";
 
 const PickUpScreen = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -72,7 +73,35 @@ const PickUpScreen = () => {
     },
   ];
   const navigation = useNavigation();
-  const proceedToCart = () => {
+
+  doPayment = async () => {
+    fetch('https://console.firebase.google.com/project/rn-stripe-demo/overview', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amount: 100,
+        currency: "usd",
+        token: this.state.token.tokenId,
+      }),
+    })
+      .then((response) => response)
+      .then((responseJson) => {
+        console.log("Success", responseJson);
+        this.setState({
+          success: responseJson.status === 'succeeded' ? true : false,
+          response: responseJson,
+        });
+      })
+      .catch((error) => {
+        console.log("Failed", error);
+      });
+  };
+
+  
+  const proceedToCart = async () => {
     if (!selectedDate || !selectedTime || !delivery) {
       Alert.alert(
         "Empty or invalid",
@@ -89,14 +118,32 @@ const PickUpScreen = () => {
       );
     }
     if (selectedDate && selectedTime && delivery) {
-      navigation.replace("Cart", {
-        pickUpDate: selectedDate,
-        selectedTime: selectedTime,
-        no_Of_days: delivery,
-      });
+      const paymentSuccess = await handlePayment(total, paymentMethod);
+
+      if (paymentSuccess) {
+        await doPayment();
+        navigation.replace("Cart", {
+          pickUpDate: selectedDate,
+          selectedTime: selectedTime,
+          no_Of_days: delivery,
+        });
+      } else {
+        Alert.alert(
+          "Payment Failed",
+          "Payment was not successful. Please try again.",
+          [
+            {
+              text: "OK",
+              onPress: () => console.log("OK Pressed"),
+            },
+          ],
+          { cancelable: false }
+        );
+      }
     }
   };
 
+  
   return (
     <>
       <SafeAreaView>
