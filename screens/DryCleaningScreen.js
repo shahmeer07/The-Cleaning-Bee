@@ -50,7 +50,7 @@ const DryCleaningScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://pngimg.com/d/iron_PNG15558.png",
             }}
             style={styles.packageImage}
           />
@@ -95,7 +95,7 @@ const DryCleaningScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://cdn-icons-png.flaticon.com/128/9753/9753675.png",
             }}
             style={styles.packageImage}
           />
@@ -141,7 +141,7 @@ const DryCleaningScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://cdn-icons-png.flaticon.com/128/9753/9753675.png",
             }}
             style={styles.packageImage}
           />
@@ -183,6 +183,7 @@ const DryCleaningScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <Text style={styles.title}>Dry Cleaning Packages</Text>
         <Pressable
           style={styles.packageButton}
           onPress={togglePackage1}
@@ -227,6 +228,13 @@ export default DryCleaningScreen;
 const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    paddingTop: 100,
+    paddingBottom: 10,
+    color: "#000000",
+  },
   container: {
     flex: 1,
     alignItems: "center",

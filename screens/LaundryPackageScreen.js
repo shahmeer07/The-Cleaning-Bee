@@ -86,7 +86,7 @@ const LaundryPackageScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $100</Text>
             </Pressable>
           )}
         </View>
@@ -101,7 +101,7 @@ const LaundryPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://png.pngtree.com/png-clipart/20230124/ourmid/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png",
+              uri: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/36389/detergent-clipart-md.png",
             }}
             style={styles.packageImage}
           />
@@ -132,7 +132,7 @@ const LaundryPackageScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $200</Text>
             </Pressable>
           )}
         </View>
@@ -178,7 +178,7 @@ const LaundryPackageScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $300</Text>
             </Pressable>
           )}
         </View>
@@ -190,6 +190,7 @@ const LaundryPackageScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <Text style={styles.title}>Laundry Packages</Text>
         <Pressable
           style={styles.packageButton}
           onPress={togglePackage1}
@@ -234,6 +235,13 @@ export default LaundryPackageScreen;
 const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    paddingTop: 100,
+    paddingBottom: 10,
+    color: "#000000",
+  },
   container: {
     flex: 1,
     alignItems: "center",

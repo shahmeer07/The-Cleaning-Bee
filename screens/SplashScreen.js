@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
   pressable: {
     position: "absolute",
     top: 20,
-    right: 20,
-    padding: 10,
+    right: 15,
+    padding: 5,
     backgroundColor: "#FF9800", // Change to the desired color
     borderRadius: 8,
   },

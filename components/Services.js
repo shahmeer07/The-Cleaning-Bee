@@ -27,8 +27,7 @@ const Services = ({}) => {
     },
     {
       id: "013",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNSzLQ8Db8PidnqQxzXJ5JF8lK7Ryzz7rRPA&usqp=CAU",
+      image: "https://www.pngarts.com/files/2/Maid-PNG-Image-Background.png",
       name: " \n Maids",
     },
   ];

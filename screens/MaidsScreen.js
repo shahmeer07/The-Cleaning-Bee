@@ -51,7 +51,7 @@ const MaidsScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/735/384/png-transparent-maid-service-cleaner-commercial-cleaning-janitor-maid-company-building-service-thumbnail.png",
+              uri: "https://www.pngmart.com/files/22/Maid-PNG-HD.png",
             }}
             style={styles.packageImage}
           />
@@ -79,7 +79,7 @@ const MaidsScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $400</Text>
             </Pressable>
           )}
         </View>
@@ -94,7 +94,7 @@ const MaidsScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/707/89/png-transparent-female-housekeeper-illustration-maid-cleaning-the-maid-smiled-hand-people-cartoon-thumbnail.png",
+              uri: "https://www.pngmart.com/files/22/Maid-PNG-Image.png",
             }}
             style={styles.packageImage}
           />
@@ -122,7 +122,7 @@ const MaidsScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $600</Text>
             </Pressable>
           )}
         </View>
@@ -137,7 +137,7 @@ const MaidsScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/707/89/png-transparent-female-housekeeper-illustration-maid-cleaning-the-maid-smiled-hand-people-cartoon-thumbnail.png",
+              uri: "https://www.pngarts.com/files/2/Maid-PNG-Image-Background.png",
             }}
             style={styles.packageImage}
           />
@@ -165,7 +165,7 @@ const MaidsScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $800</Text>
             </Pressable>
           )}
         </View>
@@ -177,6 +177,7 @@ const MaidsScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <Text style={styles.title}>Maids for the month</Text>
         <Pressable
           style={styles.packageButton}
           onPress={togglePackage1}
@@ -221,12 +222,19 @@ export default MaidsScreen;
 const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    paddingTop: 100,
+    paddingBottom: 10,
+    color: "#000000",
+  },
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 50,
-    backgroundColor: "#004488",
+    backgroundColor: "#808080",
   },
   scrollViewContainer: {
     flexGrow: 1,

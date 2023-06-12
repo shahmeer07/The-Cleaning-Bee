@@ -88,7 +88,7 @@ const Homescreen = () => {
       });
 
       for (let item of response) {
-        let address = `${item.name} ${item.city} ${item.country} `;
+        let address = `${item.name} ${item.city}  `;
         setdisplayCurrentAddress(address);
       }
       console.log(response);
@@ -142,7 +142,8 @@ const Homescreen = () => {
     },
     {
       id: "4",
-      image: "https://cdn-icons-png.flaticon.com/512/1216/1216355.png",
+      image:
+        "https://www.pngkey.com/png/full/158-1585311_lavanderia-window-cleaner.png",
       name: "Window \nCleaners",
       quantity: 0,
       price: 10,

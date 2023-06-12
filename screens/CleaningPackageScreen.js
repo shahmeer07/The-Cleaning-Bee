@@ -51,7 +51,7 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://e7.pngegg.com/pngimages/672/957/png-clipart-woman-wearing-blue-apron-maid-service-cleaner-cleaning-housekeeping-maid-miscellaneous-service-thumbnail.png",
+              uri: "https://www.pngplay.com/wp-content/uploads/6/Floor-Cleaning-Mop-Transparent-File.png",
             }}
             style={styles.packageImage}
           />
@@ -80,7 +80,7 @@ const CleaningPackageScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $150</Text>
             </Pressable>
           )}
         </View>
@@ -95,7 +95,7 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "",
             }}
             style={styles.packageImage}
           />
@@ -125,7 +125,7 @@ const CleaningPackageScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $250</Text>
             </Pressable>
           )}
         </View>
@@ -140,7 +140,7 @@ const CleaningPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://w7.pngwing.com/pngs/925/152/png-transparent-assorted-household-cleaning-items-commercial-cleaning-maid-service-cleaner-cleaning-agent-clean-furniture-bathroom-toilet-thumbnail.png",
+              uri: "https://cdn.pixabay.com/photo/2012/04/11/17/24/cleaning-29040_1280.png",
             }}
             style={styles.packageImage}
           />
@@ -171,7 +171,7 @@ const CleaningPackageScreen = () => {
               android_ripple={{ color: "#FF9800" }}
               accessibilityLabel="Add to Cart"
             >
-              <Text style={styles.addButtonText}>Add</Text>
+              <Text style={styles.addButtonText}>Add for $350</Text>
             </Pressable>
           )}
         </View>
@@ -183,6 +183,7 @@ const CleaningPackageScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <Text style={styles.title}>Cleaning Packages</Text>
         <Pressable
           style={styles.packageButton}
           onPress={togglePackage1}
@@ -227,6 +228,13 @@ export default CleaningPackageScreen;
 const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    paddingTop: 100,
+    paddingBottom: 10,
+    color: "#000000",
+  },
   container: {
     flex: 1,
     alignItems: "center",
