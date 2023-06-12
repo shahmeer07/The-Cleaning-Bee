@@ -15,6 +15,7 @@ const MaidsScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+  const beeImage = require("../assets/bee-128.png");
   const package1Name = "Sophia Rodriguez";
   const package2Name = "Emily Chen";
   const package3Name = "Lele Pons";
@@ -208,6 +209,7 @@ const MaidsScreen = () => {
         </Pressable>
 
         {renderPackage3Details()}
+        <Image source={beeImage} style={{ padding: 50, marginTop: 50 }} />
       </ScrollView>
       <Footer />
     </View>
@@ -224,11 +226,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 50,
+    backgroundColor: "#004488",
   },
   scrollViewContainer: {
     flexGrow: 1,
     alignItems: "center",
-    paddingTop: 10,
+    paddingTop: 100,
     paddingBottom: 10,
   },
   packageButton: {

@@ -165,7 +165,7 @@ const Homescreen = () => {
 
   return (
     <>
-      <ScrollView style={{ backgroundColor: "#F0F0F0", marginTop: 38 }}>
+      <ScrollView style={{ backgroundColor: "#FDD835", marginTop: 38 }}>
         {/* Location and Profile */}
         <View
           style={{
@@ -184,10 +184,9 @@ const Homescreen = () => {
                 width: 40,
                 height: 40,
                 borderRadius: 20,
+                marginTop: 2,
               }}
-              source={{
-                uri: "https://lh3.googleusercontent.com/a/AGNmyxZhb2ameVe-9hD3M4DrYA6o_5Vun2_RsQrvKAEv=s96-c-rg-br100",
-              }}
+              source={require("../assets/bee-128.png")}
             />
           </Pressable>
         </View>
@@ -219,7 +218,7 @@ const Homescreen = () => {
             fontWeight: "500",
             marginBottom: 7,
             marginLeft: 10,
-            color: "#FFFFFF",
+            color: "black",
           }}
         >
           Frequently Bought Items :D

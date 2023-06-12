@@ -54,7 +54,7 @@ const RegisterScreen = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "#FDD835",
         alignItems: "center",
         padding: 10,
       }}

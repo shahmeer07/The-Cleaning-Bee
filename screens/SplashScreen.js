@@ -28,25 +28,41 @@ const SplashScreen = () => {
   }, [navigation]);
 
   const translateY = useRef(new Animated.Value(0)).current;
+  const scale = useRef(new Animated.Value(1)).current;
 
   const animateLogo = () => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(translateY, {
-          toValue: windowHeight / 6 - 20, // Adjust this value based on the logo height
-          duration: 1500,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-        Animated.timing(translateY, {
-          toValue: 0,
-          duration: 1500,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-      ]),
-      { iterations: -1 }
-    ).start();
+    Animated.parallel([
+      Animated.timing(translateY, {
+        toValue: windowHeight / 6 - 20, // Adjust this value based on the logo height
+        duration: 1000,
+        easing: Easing.ease,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scale, {
+        toValue: 0.8,
+        duration: 1000,
+        easing: Easing.ease,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(translateY, {
+            toValue: 0,
+            duration: 500,
+            easing: Easing.ease,
+            useNativeDriver: true,
+          }),
+          Animated.timing(scale, {
+            toValue: 1,
+            duration: 500,
+            easing: Easing.ease,
+            useNativeDriver: true,
+          }),
+        ]),
+        { iterations: -1 }
+      ).start();
+    });
   };
 
   return (
@@ -54,7 +70,9 @@ const SplashScreen = () => {
       <SafeAreaView style={styles.container}>
         <View style={styles.bg}>
           <Animated.Image
-            source={require("../assets/TCB-Splash-Screen.png")}
+            source={{
+              uri: "https://static.vecteezy.com/system/resources/previews/000/642/656/original/abstract-modern-yellow-bee-hive-pattern-hexagon-background-illustration-vector-eps10.jpg",
+            }}
             style={[
               styles.backgroundImage,
               { width: windowWidth, height: windowHeight },
@@ -63,7 +81,12 @@ const SplashScreen = () => {
           />
           <Animated.Image
             source={require("../assets/bee-128.png")}
-            style={[styles.logo, { transform: [{ translateY }] }]}
+            style={[
+              styles.logo,
+              {
+                transform: [{ translateY }, { scale }],
+              },
+            ]}
           />
           <View style={styles.textContainer}>
             <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>

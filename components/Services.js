@@ -15,7 +15,9 @@ const Services = ({}) => {
     },
     {
       id: "011",
-      image: "https://cdn-icons-png.flaticon.com/128/2975/2975175.png",
+      image:
+        "https://png.pngtree.com/png-clipart/20230124/ourmid/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png",
+
       name: "Laundry \n Packages",
     },
     {
@@ -38,7 +40,7 @@ const Services = ({}) => {
           fontSize: 16,
           fontWeight: "500",
           marginBottom: 7,
-          color: "#FFFFFF",
+          color: "black",
         }}
       >
         Services Available

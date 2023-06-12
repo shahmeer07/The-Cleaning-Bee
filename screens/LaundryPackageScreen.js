@@ -17,6 +17,7 @@ const LaundryPackageScreen = () => {
   const [package1Visible, setPackage1Visible] = useState(false);
   const [package2Visible, setPackage2Visible] = useState(false);
   const [package3Visible, setPackage3Visible] = useState(false);
+  const beeImage = require("../assets/bee-128.png");
   const package1Name = "Fresh & Clean Package";
   const package2Name = "Deluxe Care Pakage";
   const package3Name = "Express Refresh Package";
@@ -55,7 +56,7 @@ const LaundryPackageScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://png.pngtree.com/png-clipart/20230124/ourmid/pngtree-illustration-of-a-laundry-washing-machine-png-image_6568228.png",
+              uri: "https://cdn-icons-png.flaticon.com/128/2975/2975175.png",
             }}
             style={styles.packageImage}
           />
@@ -221,6 +222,7 @@ const LaundryPackageScreen = () => {
         </Pressable>
 
         {renderPackage3Details()}
+        <Image source={beeImage} style={{ padding: 50, marginTop: 50 }} />
       </ScrollView>
       <Footer />
     </View>
@@ -237,11 +239,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 50,
+    backgroundColor: "#42A5F5",
   },
   scrollViewContainer: {
     flexGrow: 1,
     alignItems: "center",
-    paddingTop: 10,
+    paddingTop: 100,
     paddingBottom: 10,
   },
   packageButton: {
