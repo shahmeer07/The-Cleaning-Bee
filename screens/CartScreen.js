@@ -21,6 +21,8 @@ import { collection, addDoc } from "firebase/firestore";
 
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import StripeApp from "./StripeApp";
+import { StripeProvider } from "@stripe/stripe-react-native";
 
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -33,7 +35,20 @@ const CartScreen = () => {
 
   const handlePaymentMethodSelection = (method) => {
     setPaymentMethod(method);
+    if (paymentMethod === "card") {
+      navigation.navigate("StripeApp"); // Navigate to the desired screen
+    }
   };
+
+  // let paymentComponent = null;
+  // if (paymentMethod === "card") {
+  //   paymentComponent = (
+  //     <StripeProvider publishableKey="pk_test_51LiDRNGnkLV9x7EnfRVJw77eaU1C30bz1N4dHsGEfiremOruIAdXkQllE3o6h43QDRLYWrmOxJQsbL98sAO3ONd100MqsKKeD1">
+  //       <StripeApp />
+  //     </StripeProvider>
+  //   );
+  
+
   const navigation = useNavigation();
 
   const userUid = auth.currentUser.uid;
@@ -64,7 +79,7 @@ const CartScreen = () => {
       console.error("Error adding order to pastOrders:", error);
     }
     // End of Past Orders handling
-    navigation.navigate("Order");
+    a.navigate("Order");
     dispatch(cleanCart());
     await setDoc(
       doc(db, "users", `${userUid}`),
@@ -503,7 +518,7 @@ const CartScreen = () => {
         </Pressable>
       )}
     </>
-  );
+  );  
 };
 
 export default CartScreen;

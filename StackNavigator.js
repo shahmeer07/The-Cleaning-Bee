@@ -18,6 +18,7 @@ import LaundryPakageScreen from "./screens/LaundryPackageScreen";
 import MaidsScreen from "./screens/MaidsScreen";
 import FAQsScreen from "./screens/FAQsScreen";
 import PastOrderScreen from "./screens/PastOrderScreen";
+import StripeApp from './screens/StripeApp'
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -96,6 +97,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Order"
           component={OrderScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="StripeApp"
+          component={StripeApp}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
