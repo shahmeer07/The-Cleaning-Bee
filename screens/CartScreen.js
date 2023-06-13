@@ -19,6 +19,7 @@ import {
 import { decrementQty, incrementQty } from "../ProductReducer";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import PaymentForm from "../components/PaymentForm";
 
 const CartScreen = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -32,14 +33,56 @@ const CartScreen = () => {
   const handlePaymentMethodSelection = (method) => {
     setPaymentMethod(method);
   };
+
+  // const handleCardPayment = (method) => {
+  //   handlePaymentMethodSelection("card");
+  //   // return(
+  //   //   <PaymentForm/>
+  //   // )
+  //   // <PaymentForm/>
+  // };
+
   const navigation = useNavigation();
 
   const userUid = auth.currentUser.uid;
   const dispatch = useDispatch();
+
+  const processPayment = async (paymentMethod) => {
+    const response = await fetch(
+      "http://localhost:5001/the-cleaning-bee/us-central1/processPayment",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: total * 100, // Example amount in cents
+          currency: "usd",
+          paymentMethodId: paymentMethod,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.success) {
+      // Handle successful payment
+      console.log("Payment Successful!");
+    } else {
+      // Handle payment error
+      console.error("Payment error:", data.error);
+    }
+  };
+
   const placeOrder = async () => {
     if (paymentMethod === "") {
       Alert.alert("Payment Option Required", "Please select a payment option.");
       return;
+    }
+    try {
+      await processPayment(paymentMethod);
+    } catch (error) {
+      console.error("Payment error:", error);
     }
     navigation.navigate("Order");
     dispatch(cleanCart());
@@ -202,6 +245,7 @@ const CartScreen = () => {
                   ]}
                   onPress={() => handlePaymentMethodSelection("card")}
                 >
+                  <PaymentForm/>
                   <Text
                     style={[
                       styles.paymentOptionButtonText,
