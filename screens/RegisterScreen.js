@@ -54,7 +54,7 @@ const RegisterScreen = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "#FDD835",
+        backgroundColor: "#F0F0F0",
         alignItems: "center",
         padding: 10,
       }}
@@ -68,7 +68,7 @@ const RegisterScreen = () => {
           }}
         >
           <Text style={{ fontSize: 20, color: "#662d91", fontWeight: "bold" }}>
-            Register
+            The Cleaning Bee
           </Text>
 
           <Text style={{ fontSize: 18, marginTop: 8, fontWeight: "600" }}>

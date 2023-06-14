@@ -47,7 +47,7 @@ const LoginScreen = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "#FDD835",
+        backgroundColor: "#F0F0F0",
         alignItems: "center",
         padding: 10,
       }}
@@ -74,9 +74,13 @@ const LoginScreen = () => {
             }}
           >
             <Text
-              style={{ fontSize: 20, color: "#662d91", fontWeight: "bold" }}
+              style={{
+                fontSize: 20,
+                color: "#662d91",
+                fontWeight: "bold",
+              }}
             >
-              Sign In
+              The Cleaning Bee
             </Text>
 
             <Text style={{ fontSize: 18, marginTop: 8, fontWeight: "600" }}>
@@ -85,7 +89,12 @@ const LoginScreen = () => {
           </View>
 
           <View style={{ marginTop: 50 }}>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
               <MaterialCommunityIcons
                 name="email-outline"
                 size={24}

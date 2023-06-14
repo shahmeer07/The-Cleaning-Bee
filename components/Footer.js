@@ -26,7 +26,7 @@ const handleLinkPress = (url) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FF9800",
+    backgroundColor: "#000000",
     paddingVertical: 15,
     paddingHorizontal: 20,
     flexDirection: "row", // Arrange the items horizontally

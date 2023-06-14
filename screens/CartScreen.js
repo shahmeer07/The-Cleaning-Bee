@@ -48,7 +48,10 @@ const CartScreen = () => {
     const order = {
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
-      items: cart,
+      items: cart.map((item) => ({
+        name: item.name,
+        packageName: item.packageName,
+      })),
     };
 
     // Add the order to the user's pastOrders array
@@ -58,7 +61,10 @@ const CartScreen = () => {
       await addDoc(userDocRef, {
         date: new Date().toLocaleDateString(),
         time: new Date().toLocaleTimeString(),
-        items: cart,
+        items: cart.map((item) => ({
+          name: item.name,
+          packageName: item.packageName,
+        })),
       });
     } catch (error) {
       console.error("Error adding order to pastOrders:", error);

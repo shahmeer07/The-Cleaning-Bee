@@ -44,6 +44,9 @@ const PastOrderScreen = () => {
               <Text style={styles.orderItems}>
                 {item.items.map((item) => item.name).join(", ")}
               </Text>
+              <Text style={styles.orderItems}>
+                {item.items.map((item) => item.packageName)}
+              </Text>
             </View>
           )}
         />

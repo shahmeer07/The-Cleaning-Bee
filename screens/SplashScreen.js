@@ -88,9 +88,7 @@ const SplashScreen = () => {
               },
             ]}
           />
-          <View style={styles.textContainer}>
-            <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>
-          </View>
+
           <TouchableOpacity
             style={styles.pressable}
             onPress={() => navigation.navigate("Home")} // Replace 'Home' with the name of your home screen
