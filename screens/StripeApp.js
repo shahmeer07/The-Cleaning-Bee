@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 import React, { useState } from "react";
-import {CardField, useConfirmPayment} from '@stripe/stripe-react-native';
+import {Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
 
 // const API_URL = "https://localhost:3000";
 const API_URL = "https://2362-2400-adc1-410-8c00-30ce-979c-5e6f-f0de.ngrok-free.app"
@@ -17,7 +17,6 @@ const StripeApp = () => {
             "Content-Type" : "application/json"
         }
     });
-    console.log(response);
     const {clientSecret, error} = await response.json();
     return {clientSecret, error};
   }
@@ -40,8 +39,8 @@ const StripeApp = () => {
             console.log("Unable to process payment");
         } else {
             const {paymentIntent, error} = await confirmPayment(clientSecret, {
-                type : "Card",
-                paymentMethodType : "card",
+                // type : "Card",
+                paymentMethodType : "Card",
                 billingDetails : billingDetails,
             });
             if (error) {
@@ -54,6 +53,8 @@ const StripeApp = () => {
     } catch (error) {
         console.log(error)
     }
+    const navigation = useNavigation();
+    navigation.navigate("Order")
   }
   return (
     <View style={styles.container}>

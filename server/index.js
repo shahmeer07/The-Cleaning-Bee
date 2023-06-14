@@ -5,7 +5,7 @@ const port = 3000;
 const PUBLISHABLE_KEY = "pk_test_51LiDRNGnkLV9x7EnfRVJw77eaU1C30bz1N4dHsGEfiremOruIAdXkQllE3o6h43QDRLYWrmOxJQsbL98sAO3ONd100MqsKKeD1";
 const SECRET_KEY = "sk_test_51LiDRNGnkLV9x7EnBU46iQXb9Zk9IkFPrHigHI5dPn29fdRmMUfHs0fUTqKKwzFQD0ttrRktlvxHsK5chyFuApqc00oDZ06JhJ";
 import Stripe from 'stripe';
-const stripe = Stripe(SECRET_KEY, {apiVersion : "2022-11-15"})
+const stripe = new Stripe(SECRET_KEY, {apiVersion : "2022-11-15"})
 
 
 app.listen(port, () => {
