@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
 
 // const API_URL = "https://localhost:3000";
-const API_URL = "https://2362-2400-adc1-410-8c00-30ce-979c-5e6f-f0de.ngrok-free.app"
+const API_URL = "https://5907-119-155-164-199.ngrok-free.app"
 
 const StripeApp = () => {
   const [email, setEmail] = useState();
@@ -14,12 +14,14 @@ const StripeApp = () => {
   const navigation = useNavigation();
 
   const fetchPaymentIntentClientSecret = async () =>{
+    console.log("Hey")
     const response = await fetch(`${API_URL}/create-payment-intent`, {
         method : "POST",
         headers : {
             "Content-Type" : "application/json"
         }
     });
+    console.log(response)
     const {clientSecret, error} = await response.json();
     return {clientSecret, error};
   }
@@ -36,7 +38,7 @@ const StripeApp = () => {
     // 2. Fetch the intent client secret from the backend
     try {
         const {clientSecret, error} = await fetchPaymentIntentClientSecret();
-        fetchPaymentIntentClientScecrcet();
+        fetchPaymentIntentClientSecret();
         // 3. Confirm the payment
         if (error) { 
             console.log("Unable to process payment");
