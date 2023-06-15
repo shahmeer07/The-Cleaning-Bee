@@ -69,7 +69,11 @@ const CartScreen = () => {
       console.error("Error adding order to pastOrders:", error);
     }
     // End of Past Orders handling
-    navigation.navigate("StripeApp");
+    if (paymentMethod === "card"){
+      navigation.navigate("StripeApp");
+    } else {
+      navigation.navigate("Order")
+    }
     dispatch(cleanCart());
     await setDoc(
       doc(db, "users", `${userUid}`),

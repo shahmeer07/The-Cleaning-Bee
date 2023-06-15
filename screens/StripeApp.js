@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 import React, { useState } from "react";
+import {useNavigation} from '@react-navigation/native';
 import {Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
 
 // const API_URL = "https://localhost:3000";
@@ -9,6 +10,8 @@ const StripeApp = () => {
   const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();
   const {confirmPayment, loading} = useConfirmPayment();
+
+  const navigation = useNavigation();
 
   const fetchPaymentIntentClientSecret = async () =>{
     const response = await fetch(`${API_URL}/create-payment-intent`, {
@@ -33,7 +36,7 @@ const StripeApp = () => {
     // 2. Fetch the intent client secret from the backend
     try {
         const {clientSecret, error} = await fetchPaymentIntentClientSecret();
-        fetchPaymentIntentClientSecret();
+        fetchPaymentIntentClientScecrcet();
         // 3. Confirm the payment
         if (error) { 
             console.log("Unable to process payment");
@@ -53,7 +56,7 @@ const StripeApp = () => {
     } catch (error) {
         console.log(error)
     }
-    const navigation = useNavigation();
+    
     navigation.navigate("Order")
   }
   return (
