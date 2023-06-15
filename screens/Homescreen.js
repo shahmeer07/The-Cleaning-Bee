@@ -188,7 +188,18 @@ const Homescreen = () => {
             alignItems: "center",
           }}
         >
-          <MaterialIcons name="location-on" size={30} color="#fd5c63" />
+          {/* <MaterialIcons name="location-on" size={30} color="#fd5c63" /> */}
+          <Image
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 20,
+              margin : 10,
+            }}
+            source={{
+              uri: "https://lh3.googleusercontent.com/a/AGNmyxZhb2ameVe-9hD3M4DrYA6o_5Vun2_RsQrvKAEv=s96-c-rg-br100",
+            }}
+          />
           <View>
             <Text style={{ fontSize: 18, fontWeight: "600" }}>Shahmeer Khan</Text>
             <Text style={{ fontSize: 12 }}>{displayCurrentAddress}</Text>

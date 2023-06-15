@@ -10,7 +10,7 @@ const Services = ({}) => {
     {
       id: 0,
       // image: "https://img.freepik.com/free-vector/cleaner-with-cleaning-products-housekeeping-service_18591-52060.jpg?w=740&t=st=1686859115~exp=1686859715~hmac=fe4bf14da0a22c12c36d1e89d82c51d74c48b0a214ac3fef4129f9373a65261b",
-      image : "https://icon-library.com/images/maid-icon/maid-icon-4.jpg",
+      image : "https://cdn-icons-png.flaticon.com/512/4344/4344486.png",
       name: " Maids",
     },
     {
