@@ -177,7 +177,7 @@ const Homescreen = () => {
   };
   return (
     <>
-      <ScrollView style={{ backgroundColor: "#FDD835", marginTop: 38 }}>
+      <ScrollView style={{  marginTop: 38 }}>
         {/* Location and Profile */}
         <View
           style={{
@@ -187,7 +187,7 @@ const Homescreen = () => {
         >
           <MaterialIcons name="location-on" size={30} color="#fd5c63" />
           <View>
-            <Text style={{ fontSize: 18, fontWeight: "600" }}>Home</Text>
+            <Text style={{ fontSize: 18, fontWeight: "600" }}>Shahmeer</Text>
             <Text style={{ fontSize: 12 }}>{displayCurrentAddress}</Text>
           </View>
           <Pressable
@@ -198,7 +198,6 @@ const Homescreen = () => {
               style={{
                 width: 40,
                 height: 40,
-                borderRadius: 20,
                 marginTop: 2,
               }}
               source={require("../assets/bee-128.png")}
@@ -303,7 +302,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 54,
     right: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "#fffff",
     padding: 10,
     borderRadius: 5,
     elevation: 3,
