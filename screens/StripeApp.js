@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
 
 // const API_URL = "https://localhost:3000";
-const API_URL = " https://bec4-2400-adc1-410-8c00-ed35-402d-55af-7424.ngrok-free.app"
+const API_URL = "https://bec4-2400-adc1-410-8c00-ed35-402d-55af-7424.ngrok-free.app"
 
 const StripeApp = () => {
   const [email, setEmail] = useState();

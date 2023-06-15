@@ -136,10 +136,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
+    color : "white",
+    backgroundColor : "#088F8F",
+    padding : 10,
+    borderRadius : 15,
   },
   answer: {
     fontSize: 16,
     lineHeight: 22,
+    padding : 10,
+    // color : "#088F8F",
   },
 });
 
