@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {useNavigation} from '@react-navigation/native';
-import {Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
+import {initStripe, Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
 
 // const API_URL = "https://localhost:3000";
 const API_URL = "https://bec4-2400-adc1-410-8c00-ed35-402d-55af-7424.ngrok-free.app"
@@ -12,6 +12,12 @@ const StripeApp = () => {
   const {confirmPayment, loading} = useConfirmPayment();
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+    initStripe({
+      publishableKey: "pk_test_51LiDRNGnkLV9x7EnfRVJw77eaU1C30bz1N4dHsGEfiremOruIAdXkQllE3o6h43QDRLYWrmOxJQsbL98sAO3ONd100MqsKKeD1",
+    });
+  }, []);
 
   const fetchPaymentIntentClientSecret = async () =>{
     const response = await fetch(`${API_URL}/create-payment-intent`, {
@@ -36,7 +42,7 @@ const StripeApp = () => {
     // 2. Fetch the intent client secret from the backend
     try {
         const {clientSecret, error} = await fetchPaymentIntentClientSecret();
-        fetchPaymentIntentClientSecret();
+        // fetchPaymentIntentClientSecret();
         // 3. Confirm the payment
         if (error) { 
             console.log("Unable to process payment");
