@@ -26,24 +26,26 @@ const handleLinkPress = (url) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FF9800",
-    paddingVertical: 15,
+    backgroundColor: "#000000",
+    paddingVertical: 5,
     paddingHorizontal: 20,
     flexDirection: "row", // Arrange the items horizontally
     alignItems: "center",
     width: "100%", // Set the width to 100% to take up the full width of the screen
+    height: 23,
+    marginBottom : -5,
   },
   textLeft: {
     flex: 1, // Expand to take available space
     color: "white",
-    fontFamily: "Lato",
     textAlign: "left", // Align the text to the left
+    fontSize : 8,
   },
   link: {
     color: "white",
-    fontFamily: "Lato",
     textDecorationLine: "underline",
     textAlign: "right", // Align the link to the right
+    fontSize : 8,
   },
 });
 

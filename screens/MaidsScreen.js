@@ -136,9 +136,7 @@ const MaidsScreen = () => {
       return (
         <View style={styles.packageDetailsContainer}>
           <Image
-            source={{
-              uri: "https://www.pngarts.com/files/2/Maid-PNG-Image-Background.png",
-            }}
+            source={require("../assets/Maid_03.jpg")}
             style={styles.packageImage}
           />
           <Text style={styles.packageText}>
@@ -176,8 +174,21 @@ const MaidsScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop : 80,
+            marginHorizontal : 30,
+          }}
+        >
+          <Text style={styles.title}>Maids of the Month</Text>
+          <Image
+            source={beeImage}
+            style={{ width: 40, height: 40, marginTop: 2 }}
+          />
+        </View>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-        <Text style={styles.title}>Maids for the month</Text>
         <Pressable
           style={styles.packageButton}
           onPress={togglePackage1}
@@ -210,7 +221,6 @@ const MaidsScreen = () => {
         </Pressable>
 
         {renderPackage3Details()}
-        <Image source={beeImage} style={{ padding: 50, marginTop: 50 }} />
       </ScrollView>
       <Footer />
     </View>
@@ -225,28 +235,24 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    paddingTop: 100,
+    // paddingTop: 100,
     paddingBottom: 10,
     color: "#000000",
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 50,
-    backgroundColor: "#808080",
   },
   scrollViewContainer: {
     flexGrow: 1,
     alignItems: "center",
-    paddingTop: 100,
+    paddingTop: 30,
     paddingBottom: 10,
   },
   packageButton: {
     width: windowWidth * 0.8,
     height: 50,
     borderRadius: 10,
-    backgroundColor: "#FF9800",
+    backgroundColor: "#088F8F",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 10,
@@ -264,10 +270,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "#FF9800",
+    backgroundColor: "white",
   },
   packageImage: {
-    width: windowWidth * 0.8,
+    // width: 400,
+    height: 250,
     aspectRatio: 1,
     borderRadius: 10,
   },
@@ -276,20 +283,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     textAlign: "justify",
-    color: "#FFF",
-    fontFamily: "Lato",
+    color: "#088F8F",
+    padding: 10,
   },
   addButton: {
     width: windowWidth * 0.6,
     height: 40,
     borderRadius: 8,
-    backgroundColor: "#FFF",
+    backgroundColor: "#FF9800",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
   },
   addButtonText: {
-    color: "#FF9800",
+    color: "white",
     fontSize: 16,
     fontWeight: "bold",
   },

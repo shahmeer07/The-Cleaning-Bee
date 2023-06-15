@@ -88,15 +88,10 @@ const SplashScreen = () => {
               },
             ]}
           />
-          <View style={styles.textContainer}>
+          {/* <View style={styles.textContainer}>
             <Text style={styles.text}>Copyright Shahmeer and Sannya Co.</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.pressable}
-            onPress={() => navigation.navigate("Home")} // Replace 'Home' with the name of your home screen
-          >
-            <Text style={styles.pressableText}>Go to Home</Text>
-          </TouchableOpacity>
+          </View> */}
+          
         </View>
       </SafeAreaView>
       <Footer />
@@ -132,14 +127,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     textAlign: "center",
-  },
-  pressable: {
-    position: "absolute",
-    top: 20,
-    right: 15,
-    padding: 5,
-    backgroundColor: "#FF9800", // Change to the desired color
-    borderRadius: 8,
   },
   pressableText: {
     color: "white",

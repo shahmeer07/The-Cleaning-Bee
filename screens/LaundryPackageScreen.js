@@ -66,9 +66,6 @@ const LaundryPackageScreen = () => {
             clean, and neatly folded clothes. With our reliable laundry
             services, we'll take care of your laundry from start to finish,
             ensuring your garments come back looking and smelling fantastic.
-            Experience the joy of effortlessly maintaining a wardrobe filled
-            with crisp, clean clothes. Choose our Fresh & Clean Package and let
-            us handle your laundry worries.
           </Text>
           {cart.find((item) => item.id === 1010) ? (
             <Pressable
@@ -111,9 +108,7 @@ const LaundryPackageScreen = () => {
             beyond to provide exceptional care for your garments. From delicate
             fabrics to tough stains, our expert team utilizes advanced
             techniques and specialized products to ensure your clothes receive
-            the utmost care and attention. With our Deluxe Care Package, your
-            clothes will be treated like royalty. Pamper yourself and your
-            wardrobe with our unparalleled laundry services.
+            the utmost care and attention.
           </Text>
 
           {cart.find((item) => item.id === 2010) ? (
@@ -157,9 +152,7 @@ const LaundryPackageScreen = () => {
             efficient laundry services. Our Express Refresh Package offers a
             lightning-fast turnaround time, ensuring your clothes are washed,
             dried, and folded promptly. No more stress or delays. Just drop off
-            your laundry, and we'll take care of the rest, so you can get back
-            to your day with refreshed and perfectly clean clothes. Say goodbye
-            to laundry woes with our convenient Express Refresh Package.
+            your laundry, and we'll take care of the rest!
           </Text>
 
           {cart.find((item) => item.id === 3010) ? (
@@ -189,8 +182,21 @@ const LaundryPackageScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop : 80,
+            marginHorizontal : 30,
+          }}
+        >
+          <Text style={styles.title}>Laundary Packages</Text>
+          <Image
+            source={beeImage}
+            style={{ width: 40, height: 40, marginTop: 2 }}
+          />
+        </View>
       <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-        <Text style={styles.title}>Laundry Packages</Text>
         <Pressable
           style={styles.packageButton}
           onPress={togglePackage1}
@@ -223,7 +229,6 @@ const LaundryPackageScreen = () => {
         </Pressable>
 
         {renderPackage3Details()}
-        <Image source={beeImage} style={{ padding: 50, marginTop: 50 }} />
       </ScrollView>
       <Footer />
     </View>
@@ -238,28 +243,24 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    paddingTop: 100,
+    // paddingTop: 100,
     paddingBottom: 10,
     color: "#000000",
   },
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 50,
-    backgroundColor: "#42A5F5",
   },
   scrollViewContainer: {
     flexGrow: 1,
     alignItems: "center",
-    paddingTop: 100,
+    paddingTop: 30,
     paddingBottom: 10,
   },
   packageButton: {
     width: windowWidth * 0.8,
     height: 50,
     borderRadius: 10,
-    backgroundColor: "#FF9800",
+    backgroundColor: "#088F8F",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 10,
@@ -277,10 +278,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "#FF9800",
+    backgroundColor: "white",
   },
   packageImage: {
-    width: windowWidth * 0.8,
+    // width: 400,
+    height: 250,
     aspectRatio: 1,
     borderRadius: 10,
   },
@@ -289,20 +291,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     textAlign: "justify",
-    color: "#FFF",
-    fontFamily: "Lato",
+    color: "#088F8F",
+    padding: 10,
   },
   addButton: {
     width: windowWidth * 0.6,
     height: 40,
     borderRadius: 8,
-    backgroundColor: "#FFF",
+    backgroundColor: "#FF9800",
     justifyContent: "center",
     alignItems: "center",
     marginTop: 10,
   },
   addButtonText: {
-    color: "#FF9800",
+    color: "white",
     fontSize: 16,
     fontWeight: "bold",
   },

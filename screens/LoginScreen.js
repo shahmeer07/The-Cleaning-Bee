@@ -47,9 +47,9 @@ const LoginScreen = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "#FDD835",
         alignItems: "center",
         padding: 10,
+        marginTop : 70,
       }}
     >
       {loading ? (

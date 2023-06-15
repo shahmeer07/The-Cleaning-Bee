@@ -112,7 +112,7 @@ const PickUpScreen = () => {
 
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={{marginTop:50}}>
         <Text style={{ fontSize: 16, fontWeight: "500", marginHorizontal: 10 }}>
           Enter Address
         </Text>

@@ -30,7 +30,17 @@ const PastOrderScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={{flexDirection:"row", justifyContent : "space-between", marginBottom : 10}}>
       <Text style={styles.title}>Past Orders</Text>
+      <Image
+              style={{
+                width: 40,
+                height: 40,
+                marginTop: 2,
+              }}
+              source={require("../assets/bee-128.png")}
+            />
+      </View>
       {pastOrders.length === 0 ? (
         <Text>No past orders found.</Text>
       ) : (
@@ -42,15 +52,12 @@ const PastOrderScreen = () => {
               <Text style={styles.orderDate}>{item.date}</Text>
               <Text style={styles.orderTime}>{item.time}</Text>
               <Text style={styles.orderItems}>
-                {item.items.map((item) => item.name).join(", ")}
+                Product Details : {item.items.map((item) => item.name).join(", ")}
               </Text>
             </View>
           )}
         />
       )}
-      <View>
-        <Image source={require("../assets/bee-128.png")} style={styles.image} />
-      </View>
     </SafeAreaView>
   );
 };
@@ -61,7 +68,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#FDEF49",
+    marginTop : 15,
+    
   },
   title: {
     fontSize: 24,
@@ -70,23 +78,24 @@ const styles = StyleSheet.create({
   },
   orderItemContainer: {
     marginBottom: 16,
+    backgroundColor : "#088F8F",
+    borderRadius : 15,
+    paddingHorizontal : 25,
+    paddingVertical : 10,
+    
   },
   orderDate: {
     fontSize: 18,
     fontWeight: "bold",
+    color : "white",
   },
   orderTime: {
     fontSize: 16,
-    color: "gray",
+    color : "white",
   },
   orderItems: {
     fontSize: 16,
     marginTop: 8,
-  },
-  image: {
-    width: 128,
-    height: 128,
-    marginTop: 8,
-    marginLeft: 100,
-  },
+    color : "white",
+  }
 });
