@@ -50,7 +50,7 @@ const DryCleaningScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://pngimg.com/d/iron_PNG15558.png",
+              uri: "https://img.freepik.com/premium-vector/dry-cleaning-store-service-with-washing-machines-laundry-clean-clothing-flat-illustration_2175-8540.jpg",
             }}
             style={styles.packageImage}
           />
@@ -95,7 +95,7 @@ const DryCleaningScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://cdn-icons-png.flaticon.com/128/9753/9753675.png",
+              uri: "https://cdni.iconscout.com/illustration/premium/thumb/dry-cleaning-clothes-6802520-5648312.png",
             }}
             style={styles.packageImage}
           />
@@ -141,7 +141,7 @@ const DryCleaningScreen = () => {
         <View style={styles.packageDetailsContainer}>
           <Image
             source={{
-              uri: "https://cdn-icons-png.flaticon.com/128/9753/9753675.png",
+              uri: "https://img.freepik.com/premium-vector/laundry-equipment-woman-doing-domestic-job_24640-20184.jpg",
             }}
             style={styles.packageImage}
           />

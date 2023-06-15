@@ -22,6 +22,9 @@ import { useNavigation } from "@react-navigation/native";
 import { collection, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import Footer from "../components/Footer";
+import Deals from '../components/Deals';
+
+
 const Homescreen = () => {
   const cart = useSelector((state) => state.cart.cart);
   const [items, setItems] = useState([]);
@@ -253,6 +256,8 @@ const Homescreen = () => {
         {product.map((item, index) => (
           <FrequentItems item={item} key={index} />
         ))}
+        {/* Discounts and Deals */}
+        <Deals/>
       </ScrollView>
       {total === 0 ? null : (
         <Pressable

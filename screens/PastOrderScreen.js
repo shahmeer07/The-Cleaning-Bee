@@ -52,7 +52,7 @@ const PastOrderScreen = () => {
               <Text style={styles.orderDate}>{item.date}</Text>
               <Text style={styles.orderTime}>{item.time}</Text>
               <Text style={styles.orderItems}>
-                Product Details : {item.items.map((item) => item.name).join(", ")}
+                Products/Packages : {item.items.map((item) => item.packageName || item.name).join(", ")}
               </Text>
             </View>
           )}
