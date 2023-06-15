@@ -70,7 +70,7 @@ const CartScreen = () => {
     }
     // End of Past Orders handling
     if (paymentMethod === "card"){
-      navigation.navigate("StripeApp");
+      navigation.navigate("StripeApp", {totalAmount : total+5});
     } else {
       navigation.navigate("Order")
     }

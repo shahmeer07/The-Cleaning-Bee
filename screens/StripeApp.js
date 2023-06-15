@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Button, Alert } from "react-native";
 import React, { useState, useEffect } from "react";
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {initStripe, Stripe, CardField, useConfirmPayment} from '@stripe/stripe-react-native';
 
 // const API_URL = "https://localhost:3000";
@@ -12,6 +12,8 @@ const StripeApp = () => {
   const {confirmPayment, loading} = useConfirmPayment();
 
   const navigation = useNavigation();
+  const route = useRoute();
+  const totalAmount = route.params?.totalAmount || 0;
 
   useEffect(() => {
     initStripe({
@@ -23,9 +25,13 @@ const StripeApp = () => {
     const response = await fetch(`${API_URL}/create-payment-intent`, {
         method : "POST",
         headers : {
-            "Content-Type" : "application/json"
-        }
+            "Content-Type" : "application/json",
+        },
+        body:JSON.stringify({
+          amount : totalAmount,
+        },)
     });
+    console.log("Total Amount : ", totalAmount);
     const {clientSecret, error} = await response.json();
     return {clientSecret, error};
   }
@@ -51,7 +57,7 @@ const StripeApp = () => {
                 // type : "Card",
                 paymentMethodType : "Card",
                 billingDetails : billingDetails,
-            });
+            },);
             if (error) {
                 alert(`Payment Confirmation Error ${error.message}`);
             } else if (paymentIntent) {
