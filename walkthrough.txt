@@ -1,0 +1,50 @@
+A Step-by-Step Walkthrough of The Cleaning Bee App.
+
+DEPENDENCIES:
+1) Expo Server
+Since the app is built upon React Native, therefore we need expo server to conect our code with the 
+mobile and start it running.
+
+Installation:
+To install in project, run: yarn
+To install in mobile, go to Google Play Store and download the application.
+
+Running Environment:
+After all the dependencies are installed, run: yarn start. This will start the expo server and will generate a QR code.
+After the installation of the expo app is completed, scan the QR code to connect our project with the expo.
+This way the app will b up and running.
+
+2) Local Host
+On Android, 'localhost' is a reserved word and that's why it may not work. To solve that issue, I have used ngrok, which is a 
+software that makes your locally-hosted web server appear to be hosted on a subdomain of ngrok.com, meaning that no public IP or 
+domain name on the local machine is needed.
+
+Installation:
+To install ngrok software, visit this link "https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-windows-amd64.zip" and download.
+
+Set up:
+Once the zip file is downloaded, extract the executable file and run it. 
+To set up a subdomain, type: ngrok.exe http 300.
+This will generate a subdomain for our localhost.
+
+Integration:
+Once the set up is complete, go to StripeApp.js file in the root directory fo the project and replace the API_URL string with the 
+generated subdomain by copying pasting the url from the .exe.
+Save the changes.
+
+To run the server, open a new terminal window and change directory to server by running the following: cd server.
+To install the dependencies, run: npm i.
+To set up the server, run : nodemon index.js.
+
+3) Database
+Click the following link to access the database: https://console.firebase.google.com/u/0/project/the-cleaning-bee/firestore/data/~2Fusers~2F7Ool8ag1SFTW1qZBMocxqoVuFHz1
+
+4) Stripe Payment Dashboard
+To view the transactions, replace the exisiting publishable and secret keys in server/index.js and StripeApp.js with your keys.
+
+5) Payments
+For succesful payment transactions, use the following test data:
+    card number: 4242 4242 4242 4242
+    month/year: (any)
+    cvc : 000
+    post code:000
