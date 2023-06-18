@@ -110,6 +110,7 @@ const RegisterScreen = () => {
             />
             <TouchableOpacity
               style={[styles.inputs, { backgroundColor: "#087E8B" }]}
+              onPress={register}
             >
               <Text
                 style={{
